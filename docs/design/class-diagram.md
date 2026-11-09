@@ -293,6 +293,7 @@ StatusHistory ..> RequestStatus : uses
 
 | کلاس | ویژگی | دلیل اختیاری بودن |
 |---|---|---|
+| `Device` | `brand` | ثبت برند در نیازمندی اختیاری است. |
 | `Device` | `serialNumber` | ممکن است شماره سریال دستگاه در دسترس نباشد. |
 | `Staff` | `email` | ایمیل در مدل داده اجباری نیست. |
 | `RepairRequest` | `cancelledAt` | فقط برای درخواست لغوشده مقدار دارد. |
@@ -305,6 +306,7 @@ StatusHistory ..> RequestStatus : uses
 | `RepairJob` | `completedAt` | تا پیش از تکمیل موفق تعمیر تهی است. |
 | `RepairJobOperation` | `partDescription` | برای عملیات‌هایی که قطعه‌ای تعویض نمی‌شود لازم نیست. |
 | `RepairJobOperation` | `completedAt` | تا پیش از تکمیل عملیات تهی است. |
+| `RepairTest` | `testNotes` | برای FAILED اجباری و برای PASSED اختیاری است؛ این الزام شرطی در لایه برنامه اعمال می‌شود. |
 | `StatusHistory` | `previousStatus` | در رکورد اولیه درخواست تهی است. |
 | `StatusHistory` | `note` | توضیح تغییر وضعیت می‌تواند ثبت نشود. |
 | ارتباط `StatusHistory` با `Staff` | `changedByStaff` | برای عامل CUSTOMER یا SYSTEM تهی است؛ برای STAFF الزامی است. |
