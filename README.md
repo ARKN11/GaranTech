@@ -33,8 +33,11 @@
 1. [سند نیازمندی‌های نرم‌افزار (SRS)](docs/srs.md)
 2. [مستند موارد کاربرد (Use Cases)](docs/usecases.md)
 3. [نمودار فعالیت (Activity Diagram)](docs/activity-diagram.md)
+4. [مدل داده منطقی (Logical Data Model)](docs/design/data-model.md)
+5. [نمودار موجودیت‌ـ‌رابطه (ERD)](docs/design/erd.md)
+6. [تغییرات مستندات طراحی (Change Log)](docs/design/CHANGELOG.md)
 
-این مستندات مبنای طراحی و پیاده‌سازی نسخه‌های بعدی سامانه خواهند بود.
+مدل داده و ERD بر اساس SRS نسخه 0.3 و Use Cases بازبینی شده‌اند و مبنای طراحی فیزیکی پایگاه داده در مرحله بعد خواهند بود.
 
 ## محدوده کلی پروژه
 
