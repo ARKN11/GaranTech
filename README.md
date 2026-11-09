@@ -58,6 +58,7 @@
 9. [نمونه اولیه رابط کاربری (UI Prototype)](docs/prototype/README.md)
    - [جریان‌های کاربری و وضعیت‌های رابط کاربری](docs/prototype/ui-flows.md)
 10. [مستندات طراحی معماری](docs/design/architecture/README.md)
+11. [سناریوی سرتاسری و سناریوی خطا (End-to-End User Story & Error Case)](docs/design/end-to-end-scenario.md)
    - [نمودار زمینه سامانه](docs/design/architecture/system-context.md)
    - [نمودار کانتینرها](docs/design/architecture/container-diagram.md)
    - [نمودار مؤلفه‌ها](docs/design/architecture/component-diagram.md)
