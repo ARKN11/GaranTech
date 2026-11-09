@@ -49,8 +49,7 @@
 3. [نمودار فعالیت (Activity Diagram)](docs/activity-diagram.md)
 
 ### طراحی
-4. [مدل داده منطقی](docs/design/data-model.md)
-5. [نمودار موجودیت‌ـ‌رابطه (ERD)](docs/design/erd.md)
+4. [PR شماره 29 — مدل داده منطقی و ERD](https://github.com/ARKN11/GaranTech/pull/29) (در انتظار بازبینی و ادغام)
 6. [مستندات طراحی معماری](docs/design/architecture/README.md)
    - [نمودار زمینه سامانه](docs/design/architecture/system-context.md)
    - [نمودار کانتینرها](docs/design/architecture/container-diagram.md)
