@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GaranTech | نمونه اولیه رابط کاربری</title>
+<style>
+:root{font-family:Tahoma,"Segoe UI",sans-serif;color:#172033;background:#f4f6fa;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.top{height:64px;background:#15233b;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 26px;position:sticky;top:0;z-index:3}
+.brand{font-weight:800;font-size:20px;letter-spacing:.3px}.brand small{font-size:11px;color:#b9c8dc;font-weight:400;margin-right:10px}
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 64px)}
+aside{background:#fff;border-left:1px solid #e4e8ef;padding:18px 14px;height:calc(100vh - 64px);position:sticky;top:64px;overflow:auto}
+.group{font-size:11px;color:#8994a6;font-weight:bold;margin:18px 10px 8px}
+nav button{width:100%;border:0;background:transparent;text-align:right;padding:11px 12px;border-radius:8px;color:#43516a;margin:2px 0;font-size:13px}
+nav button:hover,nav button.active{background:#eaf0fb;color:#1d4c91;font-weight:bold}
+main{padding:28px;max-width:1180px;width:100%;margin:0 auto}
+.crumb{font-size:12px;color:#8994a6;margin-bottom:12px}.head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px}
+h1{font-size:23px;margin:0 0 8px}h2{font-size:16px;margin:0 0 16px}p{line-height:1.8;color:#667085;font-size:13px;margin:4px 0 14px}
+.card{background:#fff;border:1px solid #e4e8ef;border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:0 2px 8px #17203308}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+label{display:block;font-size:12px;color:#46536a;margin:0 0 7px;font-weight:600}
+input,select,textarea{width:100%;border:1px solid #d9e0ea;border-radius:8px;padding:11px;background:#fff;color:#172033;outline:none}
+textarea{min-height:92px;resize:vertical}input:focus,select:focus,textarea:focus{border-color:#4b79bd;box-shadow:0 0 0 3px #4b79bd18}
+.field{margin-bottom:14px}.hint{font-size:11px;color:#8994a6;margin-top:5px}
+.btn{border:0;border-radius:8px;padding:10px 15px;font-size:12px;font-weight:700;background:#2457a6;color:#fff}
+.btn.secondary{background:#edf1f7;color:#34445d}.btn.danger{background:#a63838}.btn.success{background:#18794e}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.tag{display:inline-block;border-radius:20px;padding:5px 9px;background:#edf2fa;color:#345987;font-size:11px;font-weight:700}
+.tag.green{background:#e7f5ed;color:#18794e}.tag.orange{background:#fff3df;color:#946016}.tag.red{background:#fdeaea;color:#a63838}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}.stat{background:#fff;border:1px solid #e4e8ef;border-radius:10px;padding:16px}.stat b{font-size:24px;display:block;margin-bottom:6px}.stat span{font-size:11px;color:#7b8798}
+table{width:100%;border-collapse:collapse;font-size:12px}th,td{text-align:right;padding:12px 9px;border-bottom:1px solid #edf0f4}th{color:#7b8798;font-weight:600;background:#fafbfd}
+.steps{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 18px}.step{padding:7px 10px;border-radius:7px;background:#f0f2f5;color:#667085;font-size:11px}.step.current{background:#e4edfb;color:#2457a6;font-weight:bold}
+.notice{background:#f3f7fd;border:1px solid #dce7f7;padding:12px;border-radius:8px;color:#435c80;font-size:12px;line-height:1.8;margin:12px 0}
+.notice.warn{background:#fff8eb;border-color:#f3e2be;color:#805c22}.hidden{display:none!important}
+.empty{text-align:center;padding:36px 12px;color:#8792a3;font-size:13px}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:12px;font-size:12px;padding:10px 0;border-bottom:1px solid #eef0f4}.kv span:first-child{color:#7b8798}
+footer{font-size:11px;color:#929cad;text-align:center;padding:20px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}aside{height:auto;position:static;border-left:0;border-bottom:1px solid #e4e8ef}nav{display:flex;overflow:auto;gap:4px}nav button{white-space:nowrap;width:auto}.group{display:none}main{padding:18px}.grid,.grid.three,.stats{grid-template-columns:1fr}.top{padding:0 16px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand">GaranTech <small>سامانه مدیریت گارانتی و تعمیر</small></div><div><span style="font-size:11px;color:#c4d1e2">نمونه اولیه تعاملی</span></div></header>
+<div class="layout">
+<aside>
+<div class="group">مشتری</div><nav id="customerNav">
+<button data-screen="newRequest" class="active">ثبت درخواست جدید</button>
+<button data-screen="track">پیگیری درخواست</button>
+<button data-screen="customerDetails">جزئیات درخواست</button>
+<button data-screen="proposal">تصمیم درباره هزینه</button>
+<button data-screen="cancel">لغو درخواست</button>
+</nav>
+<div class="group">کارکنان</div><nav id="staffNav">
+<button data-screen="login">ورود کارکنان</button>
+<button data-screen="expertDashboard">میز کارشناس خدمات</button>
+<button data-screen="receive">ثبت دریافت دستگاه</button>
+<button data-screen="inspect">ثبت نتیجه بازرسی</button>
+<button data-screen="createProposal">ثبت پیشنهاد هزینه</button>
+<button data-screen="technicianDashboard">میز کار تعمیرکار</button>
+<button data-screen="repair">ثبت عملیات تعمیر</button>
+<button data-screen="test">ثبت نتیجه آزمون</button>
+</nav>
+<div class="group">مدیریت</div><nav><button data-screen="adminDashboard">داشبورد مدیر سامانه</button><button data-screen="staffManagement">مدیریت کارکنان</button></nav>
+<div class="group">راهنما</div><nav><button data-screen="rules">قواعد و وضعیت‌ها</button></nav>
+</aside>
+<main>
+<div id="view"></div>
+<footer>GaranTech · نمونه نمایشی رابط کاربری · بدون اتصال به بک‌اند</footer>
+</main>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+const state={trackingCode:"GT-1405-00128",phone:"09121234567",status:"AWAITING_CUSTOMER_DECISION",warranty:"NOT_ELIGIBLE",proposal:1850000,test:"FAILED",role:"SERVICE_EXPERT",requestCreated:false};
+const statusFa={REGISTERED:"ثبت‌شده",RECEIVED:"دریافت‌شده",INSPECTED:"بازرسی‌شده",AWAITING_CUSTOMER_DECISION:"در انتظار تصمیم مشتری",READY_FOR_REPAIR:"آماده تعمیر",IN_REPAIR:"در حال تعمیر",COMPLETED:"تکمیل‌شده",CANCELLED:"لغوشده"};
+const pages={
+newRequest:{title:"ثبت درخواست تعمیر",sub:"برای ثبت درخواست نیازی به ساخت حساب کاربری نیست.",body:()=>`
+<div class="card"><h2>اطلاعات مشتری</h2><div class="grid"><div class="field"><label>نام و نام خانوادگی *</label><input placeholder="نام کامل"></div><div class="field"><label>شماره تلفن همراه *</label><input placeholder="09xxxxxxxxx" value="${state.phone}"></div></div></div>
+<div class="card"><h2>اطلاعات دستگاه</h2><div class="grid"><div class="field"><label>نوع دستگاه *</label><select><option>موبایل</option><option>لپ‌تاپ</option></select></div><div class="field"><label>برند *</label><input placeholder="برای مثال Samsung"></div><div class="field"><label>مدل *</label><input placeholder="مدل دستگاه"></div><div class="field"><label>شماره سریال (اختیاری)</label><input placeholder="شماره سریال"></div></div><div class="field"><label>شرح اولیه مشکل *</label><textarea placeholder="مشکل دستگاه را شرح دهید..."></textarea></div><div class="notice">ثبت درخواست به معنی تحویل فیزیکی دستگاه نیست. برای شروع بررسی، باید دستگاه را به مرکز خدمات تحویل دهید.</div><div class="actions"><button class="btn" onclick="createRequest()">ثبت درخواست و دریافت کد رهگیری</button></div></div>`},
+track:{title:"پیگیری درخواست",sub:"برای مشاهده اطلاعات درخواست، هر دو فیلد زیر الزامی است.",body:()=>`
+<div class="card"><h2>اطلاعات احراز درخواست</h2><div class="grid"><div class="field"><label>کد رهگیری *</label><input id="trackCode" value="${state.trackingCode}"></div><div class="field"><label>شماره تلفن ثبت‌شده *</label><input id="trackPhone" value="${state.phone}"></div></div><div class="notice">برای پیگیری، پذیرش یا رد پیشنهاد و لغو درخواست، کد رهگیری و شماره تلفن ثبت‌شده با هم بررسی می‌شوند.</div><div class="actions"><button class="btn" onclick="trackRequest()">مشاهده درخواست</button></div></div>`},
+customerDetails:{title:"جزئیات درخواست",sub:"اطلاعات قابل مشاهده برای مشتری",body:()=>`
+<div class="card"><div class="head"><div><h2>درخواست ${state.trackingCode}</h2><span class="tag orange">${statusFa[state.status]||state.status}</span></div><span class="tag">موبایل · Samsung</span></div>
+<div class="kv"><span>کد رهگیری</span><b>${state.trackingCode}</b></div><div class="kv"><span>وضعیت فعلی</span><b>${statusFa[state.status]||state.status}</b></div><div class="kv"><span>نتیجه بازرسی</span><b>${state.warranty==="ELIGIBLE"?"واجد شرایط گارانتی":"خارج از شرایط گارانتی"}</b></div>${state.proposal?'<div class="kv"><span>هزینه پیشنهادی</span><b>'+state.proposal.toLocaleString("fa-IR")+' ریال</b></div>':""}
+<div class="notice">در این صفحه فقط وضعیت فعلی، نتیجه بازرسی و مبلغ پیشنهادی (در صورت وجود) نمایش داده می‌شود. تاریخچه کامل وضعیت‌ها و جزئیات عملیات تعمیر در دسترس مشتری نیست.</div><div class="actions"><button class="btn secondary" onclick="go('track')">بازگشت به پیگیری</button>${state.status==="AWAITING_CUSTOMER_DECISION"?'<button class="btn" onclick="go(\'proposal\')">تصمیم درباره پیشنهاد</button>':""}${["REGISTERED","RECEIVED","INSPECTED","AWAITING_CUSTOMER_DECISION","READY_FOR_REPAIR"].includes(state.status)?'<button class="btn danger" onclick="go(\'cancel\')">درخواست لغو</button>':""}</div></div>`},
+proposal:{title:"تصمیم درباره پیشنهاد هزینه",sub:"این قابلیت فقط برای درخواست خارج از گارانتی فعال است.",body:()=>`
+<div class="card"><h2>پیشنهاد هزینه · ${state.trackingCode}</h2><div class="kv"><span>وضعیت درخواست</span><b>${statusFa[state.status]}</b></div><div class="kv"><span>مبلغ کل</span><b>${state.proposal.toLocaleString("fa-IR")} ریال</b></div><div class="notice warn">مبلغ به‌صورت یک هزینه کل ارائه شده است؛ پیشنهاد هزینه در این مرحله ریز اقلام ندارد.</div><div class="actions"><button class="btn success" onclick="customerDecision(true)">پذیرش پیشنهاد</button><button class="btn danger" onclick="customerDecision(false)">رد پیشنهاد و لغو درخواست</button></div></div>`},
+cancel:{title:"لغو درخواست",sub:"لغو فقط پیش از شروع تعمیر امکان‌پذیر است.",body:()=>`
+<div class="card"><h2>تأیید لغو درخواست</h2><div class="kv"><span>کد رهگیری</span><b>${state.trackingCode}</b></div><div class="kv"><span>وضعیت فعلی</span><b>${statusFa[state.status]}</b></div>${["IN_REPAIR","COMPLETED","CANCELLED"].includes(state.status)?'<div class="notice warn">لغو در وضعیت فعلی مجاز نیست.</div>':'<div class="field"><label>دلیل لغو (اختیاری)</label><textarea placeholder="در صورت تمایل دلیل لغو را وارد کنید"></textarea></div><div class="notice warn">با تأیید، درخواست لغو می‌شود. این عملیات قابل بازگشت نیست.</div><div class="actions"><button class="btn danger" onclick="cancelRequest()">تأیید و لغو درخواست</button><button class="btn secondary" onclick="go(\'customerDetails\')">انصراف</button></div>'}</div>`},
+login:{title:"ورود کارکنان",sub:"ورود به محیط کاری بر اساس حساب سازمانی و نقش تعریف‌شده.",body:()=>`
+<div class="card" style="max-width:520px"><div class="field"><label>نام کاربری</label><input placeholder="نام کاربری سازمانی"></div><div class="field"><label>رمز عبور</label><input type="password" placeholder="رمز عبور"></div><div class="field"><label>نقش نمایشی در نمونه اولیه</label><select id="roleSelect"><option value="SERVICE_EXPERT">کارشناس خدمات</option><option value="TECHNICIAN">تعمیرکار</option><option value="ADMIN">مدیر سامانه</option></select></div><div class="actions"><button class="btn" onclick="login()">ورود</button></div><p class="hint">احراز هویت واقعی در این نمونه پیاده‌سازی نشده است.</p></div>`},
+expertDashboard:{title:"میز کارشناس خدمات",sub:"درخواست‌های نیازمند دریافت، بازرسی یا ثبت پیشنهاد هزینه.",body:()=>`
+<div class="stats"><div class="stat"><b>۱۲</b><span>درخواست جدید</span></div><div class="stat"><b>۵</b><span>در انتظار بازرسی</span></div><div class="stat"><b>۳</b><span>در انتظار تصمیم مشتری</span></div></div><div class="card"><h2>درخواست‌های اخیر</h2><table><thead><tr><th>کد رهگیری</th><th>دستگاه</th><th>وضعیت</th><th>عملیات</th></tr></thead><tbody><tr><td>${state.trackingCode}</td><td>Samsung · A54</td><td><span class="tag orange">${statusFa[state.status]}</span></td><td><button class="btn secondary" onclick="go('receive')">باز کردن</button></td></tr><tr><td>GT-1405-00127</td><td>Lenovo · IdeaPad</td><td>ثبت‌شده</td><td><button class="btn secondary" onclick="go('receive')">باز کردن</button></td></tr></tbody></table></div>`},
+receive:{title:"ثبت دریافت فیزیکی دستگاه",sub:"بازرسی فقط پس از دریافت فیزیکی دستگاه توسط کارشناس خدمات انجام می‌شود.",body:()=>`
+<div class="card"><h2>اطلاعات دریافت</h2><div class="grid"><div class="field"><label>کد رهگیری</label><input value="${state.trackingCode}"></div><div class="field"><label>وضعیت فعلی</label><input value="${statusFa[state.status]}" disabled></div></div><div class="field"><label>تطبیق دستگاه تحویلی با درخواست</label><select><option>تطبیق دارد</option><option>مغایرت دارد</option></select></div><div class="field"><label>توضیحات دریافت (اختیاری)</label><textarea placeholder="وضعیت ظاهری یا لوازم همراه..."></textarea></div><div class="actions"><button class="btn" onclick="receiveDevice()">ثبت دریافت دستگاه</button></div></div>`},
+inspect:{title:"ثبت نتیجه بازرسی و گارانتی",sub:"ثبت حداقل یک عیب و تعیین اقدام پیشنهادی الزامی است.",body:()=>`
+<div class="card"><h2>اطلاعات بازرسی</h2><div class="field"><label>کد رهگیری</label><input value="${state.trackingCode}"></div><div class="grid"><div class="field"><label>وضعیت گارانتی *</label><select id="warranty"><option value="ELIGIBLE">واجد شرایط (ELIGIBLE)</option><option value="NOT_ELIGIBLE" selected>غیرواجد شرایط (NOT_ELIGIBLE)</option></select></div><div class="field"><label>اقدام پیشنهادی *</label><select><option>تعمیر (REPAIR)</option><option>تعویض دستگاه (DEVICE_REPLACEMENT)</option></select></div></div><div class="field"><label>عیب ثبت‌شده *</label><input placeholder="شرح عیب (حداقل یک مورد)"></div><div class="field"><label>دلیل رد گارانتی</label><textarea id="warrantyReason" placeholder="در صورت انتخاب NOT_ELIGIBLE الزامی است"></textarea></div><div class="field"><label>یادداشت تکمیلی (اختیاری)</label><textarea placeholder="توضیحات"></textarea></div><div class="actions"><button class="btn" onclick="saveInspection()">ثبت نتیجه بازرسی</button></div></div>`},
+createProposal:{title:"ثبت پیشنهاد هزینه",sub:"فقط برای درخواست خارج از گارانتی.",body:()=>`
+<div class="card"><h2>پیشنهاد هزینه تعمیر</h2><div class="field"><label>کد رهگیری</label><input value="${state.trackingCode}"></div><div class="field"><label>هزینه کل پیشنهادی (ریال) *</label><input id="amount" type="number" value="${state.proposal}"></div><div class="field"><label>توضیحات (اختیاری)</label><textarea placeholder="توضیح کوتاه برای مشتری"></textarea></div><div class="notice">در این گردش‌کار، یک مبلغ کل ثبت می‌شود و ریز اقلام هزینه دریافت نمی‌شود.</div><div class="actions"><button class="btn" onclick="saveProposal()">ثبت و ارسال پیشنهاد</button></div></div>`},
+technicianDashboard:{title:"میز کار تعمیرکار",sub:"نمایش درخواست‌های آماده تعمیر و درخواست‌های در حال تعمیر.",body:()=>`
+<div class="stats"><div class="stat"><b>۴</b><span>آماده تعمیر</span></div><div class="stat"><b>۲</b><span>در حال تعمیر</span></div><div class="stat"><b>۱</b><span>منتظر آزمون مجدد</span></div></div><div class="card"><h2>کارهای تعمیر</h2><table><thead><tr><th>کد رهگیری</th><th>دستگاه</th><th>وضعیت</th><th>عملیات</th></tr></thead><tbody><tr><td>${state.trackingCode}</td><td>Samsung · A54</td><td><span class="tag orange">${statusFa[state.status]}</span></td><td><button class="btn secondary" onclick="go('repair')">ثبت عملیات</button></td></tr></tbody></table></div>`},
+repair:{title:"ثبت عملیات تعمیر",sub:"شروع تعمیر فقط از وضعیت READY_FOR_REPAIR مجاز است.",body:()=>`
+<div class="card"><h2>پرونده تعمیر</h2><div class="kv"><span>کد رهگیری</span><b>${state.trackingCode}</b></div><div class="kv"><span>وضعیت فعلی</span><b>${statusFa[state.status]}</b></div>${state.status==="READY_FOR_REPAIR"?'<div class="notice">با شروع کار، وضعیت درخواست به IN_REPAIR تغییر می‌کند و امکان لغو مشتری بسته می‌شود.</div><button class="btn" onclick="startRepair()">شروع تعمیر</button>':'<div class="notice">برای ثبت عملیات، وضعیت باید IN_REPAIR باشد. اگر درخواست در READY_FOR_REPAIR است، ابتدا تعمیر را شروع کنید.</div>'}${state.status==="IN_REPAIR"?'<div class="field" style="margin-top:16px"><label>نوع عملیات *</label><select id="operation"><option>REPAIR — تعمیر</option><option>PART_REPLACEMENT — تعویض قطعه</option><option>DEVICE_REPLACEMENT — تعویض دستگاه</option></select></div><div class="field"><label>شرح قطعه (اختیاری)</label><input placeholder="در صورت تعویض قطعه"></div><div class="field"><label>شرح عملیات *</label><textarea placeholder="شرح کار انجام‌شده"></textarea></div><button class="btn" onclick="recordOperation()">ثبت عملیات</button>':""}</div>`},
+test:{title:"ثبت نتیجه آزمون",sub:"هر تعداد آزمون لازم باشد قابل ثبت است؛ آزمون ناموفق تعمیر را باز نگه می‌دارد.",body:()=>`
+<div class="card"><h2>آزمون نهایی</h2><div class="kv"><span>کد رهگیری</span><b>${state.trackingCode}</b></div><div class="kv"><span>وضعیت فعلی</span><b>${statusFa[state.status]}</b></div><div class="field"><label>نتیجه آزمون *</label><select id="testResult"><option value="FAILED">ناموفق (FAILED)</option><option value="PASSED">موفق (PASSED)</option></select></div><div class="field"><label>شرح نتیجه *</label><textarea placeholder="موارد بررسی‌شده و نتیجه"></textarea></div><div class="actions"><button class="btn" onclick="saveTest()">ثبت نتیجه آزمون</button></div><div class="notice warn">FAILED: وضعیت IN_REPAIR باقی می‌ماند و امکان ثبت عملیات یا آزمون مجدد وجود دارد. PASSED: سامانه وضعیت را به COMPLETED تغییر می‌دهد.</div></div>`},
+adminDashboard:{title:"داشبورد مدیر سامانه",sub:"نظارت بر درخواست‌ها و دسترسی به مدیریت کارکنان.",body:()=>`
+<div class="stats"><div class="stat"><b>۱۲۸</b><span>کل درخواست‌ها</span></div><div class="stat"><b>۲۱</b><span>در حال تعمیر</span></div><div class="stat"><b>۹</b><span>تکمیل‌شده امروز</span></div></div><div class="card"><h2>فهرست درخواست‌ها</h2><div class="field"><label>فیلتر وضعیت</label><select><option>همه وضعیت‌ها</option>${Object.entries(statusFa).map(([k,v])=>'<option>'+v+' ('+k+')</option>').join("")}</select></div><table><thead><tr><th>کد رهگیری</th><th>مشتری</th><th>دستگاه</th><th>وضعیت</th></tr></thead><tbody><tr><td>${state.trackingCode}</td><td>مشتری نمونه</td><td>Samsung A54</td><td>${statusFa[state.status]}</td></tr></tbody></table></div><div class="card"><h2>مدیریت کارکنان</h2><button class="btn" onclick="go('staffManagement')">مدیریت حساب‌ها و نقش‌ها</button></div>`},
+staffManagement:{title:"مدیریت کارکنان",sub:"ایجاد و مدیریت حساب‌های کارکنان و نقش‌های سازمانی.",body:()=>`
+<div class="card"><h2>افزودن کارمند</h2><div class="grid"><div class="field"><label>نام و نام خانوادگی *</label><input placeholder="نام کارمند"></div><div class="field"><label>نام کاربری *</label><input placeholder="نام کاربری"></div><div class="field"><label>نقش *</label><select><option>SERVICE_EXPERT — کارشناس خدمات</option><option>TECHNICIAN — تعمیرکار</option><option>ADMIN — مدیر سامانه</option></select></div><div class="field"><label>وضعیت حساب</label><select><option>فعال</option><option>غیرفعال</option></select></div></div><button class="btn" onclick="alert('این عملیات در نمونه اولیه ذخیره نمی‌شود.')">ایجاد حساب</button></div><div class="card"><h2>حساب‌های موجود</h2><table><thead><tr><th>نام</th><th>نام کاربری</th><th>نقش</th><th>وضعیت</th></tr></thead><tbody><tr><td>کارشناس نمونه</td><td>expert01</td><td>SERVICE_EXPERT</td><td><span class="tag green">فعال</span></td></tr><tr><td>تعمیرکار نمونه</td><td>tech01</td><td>TECHNICIAN</td><td><span class="tag green">فعال</span></td></tr></tbody></table></div>`},
+rules:{title:"قواعد گردش‌کار و وضعیت‌ها",sub:"مرجع سریع برای رفتارهایی که در نمونه اولیه نمایش داده شده‌اند.",body:()=>`
+<div class="card"><h2>وضعیت‌های درخواست</h2><div class="grid">${Object.entries(statusFa).map(([k,v])=>'<div class="kv"><span>'+k+'</span><b>'+v+'</b></div>').join("")}</div></div><div class="card"><h2>قواعد کلیدی</h2><ul style="font-size:13px;line-height:2.2;color:#4c5a70"><li>ثبت درخواست مشتری بدون حساب کاربری انجام می‌شود.</li><li>دسترسی به درخواست موجود فقط با کد رهگیری و شماره تلفن ثبت‌شده ممکن است.</li><li>کارشناس باید پیش از بازرسی، دریافت فیزیکی دستگاه را ثبت کند.</li><li>ثبت حداقل یک عیب و اقدام پیشنهادی در بازرسی الزامی است.</li><li>برای NOT_ELIGIBLE ثبت دلیل رد گارانتی الزامی است.</li><li>پیشنهاد هزینه فقط در مسیر خارج از گارانتی ثبت می‌شود.</li><li>شروع تعمیر فقط از READY_FOR_REPAIR مجاز است.</li><li>لغو پس از IN_REPAIR مجاز نیست.</li><li>آزمون FAILED وضعیت را IN_REPAIR نگه می‌دارد؛ PASSED وضعیت را COMPLETED می‌کند.</li><li>مشتری تاریخچه کامل وضعیت و عملیات تعمیر را مشاهده نمی‌کند.</li></ul></div>`}
+};
+function go(id){const p=pages[id];if(!p)return;document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.screen===id));$("#view").innerHTML='<div class="crumb">GaranTech / '+p.title+'</div><div class="head"><div><h1>'+p.title+'</h1><p>'+p.sub+'</p></div><span class="tag">نسخه نمایشی</span></div>'+p.body();window.scrollTo(0,0)}
+function notify(t){alert(t)}
+function createRequest(){state.requestCreated=true;state.status="REGISTERED";go("track");notify("درخواست نمایشی ثبت شد. کد رهگیری: "+state.trackingCode)}
+function trackRequest(){const c=$("#trackCode").value.trim(),p=$("#trackPhone").value.trim();if(c!==state.trackingCode||p!==state.phone){notify("درخواست یافت نشد.");return}go("customerDetails")}
+function customerDecision(accepted){if(state.status!=="AWAITING_CUSTOMER_DECISION"){notify("این درخواست در انتظار تصمیم مشتری نیست.");return}state.status=accepted?"READY_FOR_REPAIR":"CANCELLED";go("customerDetails");notify(accepted?"پیشنهاد پذیرفته شد.":"پیشنهاد رد و درخواست لغو شد.")}
+function cancelRequest(){if(!["REGISTERED","RECEIVED","INSPECTED","AWAITING_CUSTOMER_DECISION","READY_FOR_REPAIR"].includes(state.status)){notify("لغو در این وضعیت مجاز نیست.");return}state.status="CANCELLED";go("customerDetails")}
+function login(){state.role=$("#roleSelect").value;go(state.role==="SERVICE_EXPERT"?"expertDashboard":state.role==="TECHNICIAN"?"technicianDashboard":"adminDashboard")}
+function receiveDevice(){state.status="RECEIVED";go("expertDashboard");notify("دریافت فیزیکی دستگاه ثبت شد.")}
+function saveInspection(){const w=$("#warranty").value,r=$("#warrantyReason").value.trim();if(w==="NOT_ELIGIBLE"&&!r){notify("برای رد گارانتی، ثبت دلیل الزامی است.");return}state.warranty=w;state.status=w==="ELIGIBLE"?"READY_FOR_REPAIR":"INSPECTED";go("expertDashboard");notify("نتیجه بازرسی ثبت شد.")}
+function saveProposal(){const n=Number($("#amount").value);if(!n||n<1){notify("مبلغ پیشنهادی معتبر وارد کنید.");return}if(state.warranty!=="NOT_ELIGIBLE"){notify("پیشنهاد هزینه فقط برای درخواست خارج از گارانتی مجاز است.");return}state.proposal=n;state.status="AWAITING_CUSTOMER_DECISION";go("expertDashboard");notify("پیشنهاد هزینه ثبت شد.")}
+function startRepair(){if(state.status!=="READY_FOR_REPAIR"){notify("شروع تعمیر فقط از READY_FOR_REPAIR مجاز است.");return}state.status="IN_REPAIR";go("repair")}
+function recordOperation(){if(state.status!=="IN_REPAIR"){notify("درخواست در حال تعمیر نیست.");return}notify("عملیات تعمیر در نمونه نمایشی ثبت شد.")}
+function saveTest(){if(state.status!=="IN_REPAIR"){notify("ثبت آزمون فقط در وضعیت IN_REPAIR مجاز است.");return}state.test=$("#testResult").value;if(state.test==="PASSED")state.status="COMPLETED";go("test");notify(state.test==="PASSED"?"آزمون موفق بود؛ درخواست تکمیل شد.":"آزمون ناموفق بود؛ وضعیت IN_REPAIR باقی ماند.")}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>go(b.dataset.screen)));
+go("newRequest");
+</script>
+</body>
+</html>
