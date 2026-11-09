@@ -38,7 +38,9 @@
 - `docs/srs.md`
 - `docs/usecases.md`
 - `docs/activity-diagram.md`
-- [PR شماره 29 — مدل داده منطقی و ERD](https://github.com/ARKN11/GaranTech/pull/29) (در انتظار بازبینی و ادغام)
+- [مدل داده منطقی](../data-model.md)
+- [نمودار ERD](../erd.md)
+- [Change Log طراحی داده](../CHANGELOG.md)
 
 در زمان بازبینی، نسخه نهایی و ادغام‌شده این مستندات مبنا باید بررسی شود. اگر سندی تغییر کند، سازگاری معماری نیز باید دوباره ارزیابی شود.
 
