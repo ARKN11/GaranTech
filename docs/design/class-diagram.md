@@ -48,7 +48,7 @@ class Customer {
 class Device {
   +String deviceId
   +DeviceCategory category
-  +String brand
+  +String? brand
   +String model
   +String? serialNumber
   +DateTime createdAt
@@ -164,7 +164,7 @@ class RepairJobOperation {
 class RepairTest {
   +String repairTestId
   +TestResult result
-  +String testNotes
+  +String? testNotes
   +DateTime testedAt
   +isPassed() Boolean
   +isFailed() Boolean
