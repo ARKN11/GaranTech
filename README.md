@@ -52,8 +52,9 @@
 ### طراحی
 4. [مدل داده منطقی (Logical Data Model)](docs/design/data-model.md)
 5. [نمودار موجودیت‌ـ‌رابطه (ERD)](docs/design/erd.md)
-6. [تغییرات مستندات طراحی داده (Change Log)](docs/design/CHANGELOG.md)
-7. [مستندات طراحی معماری](docs/design/architecture/README.md)
+6. [نمودار کلاس UML (Class Diagram)](docs/design/class-diagram.md)
+7. [تغییرات مستندات طراحی داده (Change Log)](docs/design/CHANGELOG.md)
+8. [مستندات طراحی معماری](docs/design/architecture/README.md)
    - [نمودار زمینه سامانه](docs/design/architecture/system-context.md)
    - [نمودار کانتینرها](docs/design/architecture/container-diagram.md)
    - [نمودار مؤلفه‌ها](docs/design/architecture/component-diagram.md)
