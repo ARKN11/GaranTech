@@ -51,6 +51,7 @@ class Device {
   +String brand
   +String model
   +String? serialNumber
+  +DateTime createdAt
   +validateDetails() Boolean
   +isValidCategory() Boolean
 }
@@ -356,7 +357,7 @@ class CustomerTrackingView {
   +RequestStatus currentStatus
   +WarrantyResult? warrantyResult
   +RecommendedAction? recommendedAction
-  +List<String>? diagnosedDefects
+  +String[]? diagnosedDefects
   +Decimal? estimatedTotalCost
 }
 
