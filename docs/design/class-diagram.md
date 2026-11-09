@@ -318,6 +318,8 @@ StatusHistory ..> RequestStatus : uses
 - در اولین `StatusHistory`، مقدار `previousStatus` تهی و `newStatus = REGISTERED` است.
 - در وضعیت‌های غیرلغوشده، `cancelledAt` و `cancellationReason` نباید برای نشان‌دادن لغو مقداردهی شوند.
 
+**قاعده مبلغ:** ویژگی `RepairProposal.estimatedTotalCost` باید مثبت و بزرگ‌تر از صفر باشد و واحد آن IRR (ریال ایران) است. اعتبارسنجی این قاعده در `validateAmount()` و لایه برنامه انجام می‌شود.
+
 ## 3. سرویس‌های هماهنگ‌کننده — نمودار جدا از Entityها
 
 سرویس‌های زیر Entity یا موجودیت پایگاه داده نیستند. آن‌ها مسئول هماهنگی گردش‌کار، کنترل مجوز و اجرای قواعدی هستند که نباید در یک Entity منفرد قرار بگیرند.
