@@ -54,6 +54,7 @@
 5. [نمودار موجودیت‌ـ‌رابطه (ERD)](docs/design/erd.md)
 6. [نمودار کلاس UML (Class Diagram)](docs/design/class-diagram.md)
 7. [تغییرات مستندات طراحی داده (Change Log)](docs/design/CHANGELOG.md)
+8. [گزارش بازبینی یکپارچگی مستندات طراحی](docs/design/consistency-review.md)
 8. [نمونه اولیه رابط کاربری (UI Prototype)](docs/prototype/README.md)
    - [جریان‌های کاربری و وضعیت‌های رابط کاربری](docs/prototype/ui-flows.md)
 9. [مستندات طراحی معماری](docs/design/architecture/README.md)
