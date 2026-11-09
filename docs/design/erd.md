@@ -47,7 +47,7 @@ erDiagram
     DEVICE {
         string device_id PK
         string category
-        string brand
+        string brand "optional"
         string model
         string serial_number
         datetime created_at
@@ -143,7 +143,7 @@ erDiagram
         string repair_job_id FK
         string tested_by_staff_id FK
         string result
-        string test_notes
+        string test_notes "optional"
         datetime tested_at
     }
 
@@ -159,7 +159,11 @@ erDiagram
     }
 ```
 
-## 2. راهنمای کاردینالیتی
+## 2. توضیحات اختیاری بودن ویژگی‌ها
+
+در موجودیت DEVICE، ویژگی `brand` اختیاری است؛ ویژگی‌های `category` و `model` الزامی‌اند و `serial_number` نیز در صورت نبود شماره سریال می‌تواند خالی باشد. در REPAIR_TEST، ویژگی `test_notes` اختیاری است؛ توضیح برای نتیجه FAILED در لایه برنامه الزامی و برای PASSED اختیاری است.
+
+## 3. راهنمای کاردینالیتی
 
 | نماد Mermaid | معنا |
 |---|---|
