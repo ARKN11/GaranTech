@@ -1,23 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GaranTech — UI Wireframes</title>
+<title>GaranTech — وایرفریمهای رابط کاربری</title>
 <style>
 :root{--bg:#0f1115;--panel:#161a20;--panel2:#1d222a;--line:#2c333d;--fg:#e6e9ee;--mut:#9aa4b2;--accent:#8fb8ff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:"Segoe UI",Arial,sans-serif;line-height:1.5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:Tahoma,"Segoe UI",Arial,sans-serif;line-height:1.7}
 a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 header{padding:28px 32px;border-bottom:1px solid var(--line);background:var(--panel)}
-h1{margin:0 0 6px;font-size:24px}h2{font-size:16px;margin:28px 0 12px}h3{font-size:13px;margin:0 0 4px}
-p{margin:6px 0;color:var(--mut);font-size:13px}
+h1{margin:0 0 6px;font-size:22px}h2{font-size:16px;margin:28px 0 12px}
+p{margin:6px 0;color:var(--mut);font-size:12px}
 .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .chip{border:1px solid var(--line);background:var(--panel2);border-radius:14px;padding:4px 10px;font-size:11px;color:var(--mut)}
 main{max-width:1400px;margin:0 auto;padding:24px 32px 60px}
 .notice{border:1px solid #5a4a2a;background:#221d14;border-radius:8px;padding:14px 16px;font-size:12px;color:#e4c98a}
-.notice b{color:#ffd98a}
-.notice ul{margin:8px 0 0;padding-left:18px}.notice li{margin:4px 0}
-.tabs{display:flex;gap:8px;margin:24px 0 18px}
+.notice b{color:#ffd98a}.notice ul{margin:8px 0 0;padding-right:18px}.notice li{margin:4px 0}
+.tabs{display:flex;gap:8px;margin:24px 0 18px;flex-wrap:wrap}
 .tabs button{background:var(--panel2);color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:9px 16px;cursor:pointer;font-size:12px;font-weight:600}
 .tabs button.active{background:#263247;color:var(--fg);border-color:#3d5273}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:18px}
@@ -26,87 +25,86 @@ main{max-width:1400px;margin:0 auto;padding:24px 32px 60px}
 .viewport img{max-width:100%;height:auto;display:block}
 .cap{padding:12px 14px;border-top:1px solid var(--line)}
 .cap .id{font-size:10px;color:var(--mut);letter-spacing:.5px}
-.cap a{font-size:13px;font-weight:600}
-.cap p{font-size:11px;margin:5px 0 0}
+.cap a{font-size:13px;font-weight:600}.cap p{font-size:11px;margin:5px 0 0}
 table{width:100%;border-collapse:collapse;font-size:12px;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
-th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}th{color:var(--mut);font-weight:600;background:var(--panel2)}
+th,td{text-align:right;padding:10px 12px;border-bottom:1px solid var(--line)}th{color:var(--mut);font-weight:600;background:var(--panel2)}
 tr:last-child td{border-bottom:0}
 .docs{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
 .docs a{border:1px solid var(--line);background:var(--panel2);padding:8px 12px;border-radius:6px;font-size:12px}
-footer{border-top:1px solid var(--line);padding:20px 32px;color:var(--mut);font-size:11px}
-@media(max-width:700px){header,main{padding-left:16px;padding-right:16px}.grid{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding:20px 32px;color:var(--mut);font-size:11px;text-align:center}
+@media(max-width:700px){header,main{padding-right:16px;padding-left:16px}.grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <header>
-  <h1>GaranTech — UI Wireframes</h1>
-  <p>Low-fidelity wireframes · 16 frames · 4 roles · 5 main flows</p>
+  <h1>GaranTech — وایرفریمهای رابط کاربری</h1>
+  <p>وایرفریم کمّی (Low-Fidelity) · ۱۶ صفحه · ۴ نقش · ۵ جریان اصلی</p>
   <div class="meta">
-    <span class="chip">Branch: docs/ui-wireframes</span>
-    <span class="chip">Basis: SRS v0.3 / UC / Activity Diagram</span>
-    <span class="chip">Tool: plain SVG + this gallery</span>
-    <span class="chip">Figma link: N/A</span>
+    <span class="chip">شاخه: docs/ui-wireframes</span>
+    <span class="chip">مبنا: SRS نسخه ۰٫۳ / موارد کاربرد / نمودار فعالیت</span>
+    <span class="chip">ابزار: SVG متنی + این گالری</span>
+    <span class="chip">لینک Figma: موجود نیست</span>
   </div>
 </header>
 <main>
   <div class="docs">
-    <a href="README.md">README</a>
-    <a href="customer-flows.md">Customer flows</a>
-    <a href="staff-flows.md">Staff flows</a>
-    <a href="consistency-review.md">Consistency review</a>
+    <a href="README.md">راهنما</a>
+    <a href="customer-flows.md">جریانهای مشتری</a>
+    <a href="staff-flows.md">جریانهای کارکنان</a>
+    <a href="consistency-review.md">بازبینی یکپارچگی</a>
   </div>
 
   <div class="notice">
-    <b>Authority note.</b> Where the task brief and SRS v0.3 disagree, the SRS governs and the difference is logged.
+    <b>نکته مرجعیت:</b> هر جا که فایل تسک با SRS نسخه ۰٫۳ مغایرت دارد، SRS مبنا است و اختلاف در سند بازبینی ثبت شده است.
     <ul>
-      <li>Customer Details follows BR-06: no device specs, problem description, or full status history.</li>
-      <li>Dashboard shows operational queue counters only — no analytical reports (SRS §7).</li>
-      <li>No Figma source file was available; the SVG set is vector and Figma-importable.</li>
+      <li>جزئیات درخواست مشتری مطابق BR-06 است: بدون مشخصات دستگاه، شرح مشکل یا تاریخچه کامل وضعیت.</li>
+      <li>داشبورد فقط شمارش عملیاتی صفها را نشان میدهد — بدون گزارش تحلیلی (SRS بخش ۷).</li>
+      <li>فایل Figma در دسترس نبود؛ مجموعه SVG قابل وارد کردن به Figma است.</li>
     </ul>
   </div>
 
   <div class="tabs">
-    <button id="tab-customer" class="active" onclick="show('customer')">Customer — mobile (6)</button>
-    <button id="tab-staff" onclick="show('staff')">Staff — desktop (10)</button>
+    <button id="tab-customer" class="active" onclick="show('customer')">مشتری — موبایل (۶)</button>
+    <button id="tab-staff" onclick="show('staff')">کارکنان — دسکتاپ (۱۰)</button>
   </div>
 
   <section id="customer">
     <div class="grid">
-      <div class="card"><div class="viewport"><img src="images/customer/01-home.svg" alt="P01 Home"></div><div class="cap"><div class="id">P01 · CUSTOMER</div><a href="images/customer/01-home.svg">Home</a><p>Intro, submit and track CTAs, process strip.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/customer/02-submit-request.svg" alt="P02 Submit Repair Request"></div><div class="cap"><div class="id">P02 · CUSTOMER</div><a href="images/customer/02-submit-request.svg">Submit Repair Request</a><p>Required/optional fields, validation, tracking code.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/customer/03-track-request.svg" alt="P03 Track Request"></div><div class="cap"><div class="id">P03 · CUSTOMER</div><a href="images/customer/03-track-request.svg">Track Request</a><p>Code + phone, generic not-found message.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/customer/04-request-details.svg" alt="P04 Request Details"></div><div class="cap"><div class="id">P04 · CUSTOMER</div><a href="images/customer/04-request-details.svg">Request Details</a><p>BR-06 allowlist and conditional actions.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/customer/05-customer-decision.svg" alt="P05 Customer Decision"></div><div class="cap"><div class="id">P05 · CUSTOMER</div><a href="images/customer/05-customer-decision.svg">Customer Decision</a><p>Accept / reject with confirmation.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/customer/06-cancel-request.svg" alt="P06 Cancel Request"></div><div class="cap"><div class="id">P06 · CUSTOMER</div><a href="images/customer/06-cancel-request.svg">Cancel Request</a><p>Confirmation dialog, pre-repair boundary.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/customer/01-home.svg" alt="P01 صفحه اصلی"></div><div class="cap"><div class="id">P01 · مشتری</div><a href="images/customer/01-home.svg">صفحه اصلی</a><p>معرفی، دکمههای ثبت و پیگیری، مراحل کار.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/customer/02-submit-request.svg" alt="P02 ثبت درخواست تعمیر"></div><div class="cap"><div class="id">P02 · مشتری</div><a href="images/customer/02-submit-request.svg">ثبت درخواست تعمیر</a><p>فیلدهای اجباری و اختیاری، اعتبارسنجی، کد رهگیری.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/customer/03-track-request.svg" alt="P03 پیگیری درخواست"></div><div class="cap"><div class="id">P03 · مشتری</div><a href="images/customer/03-track-request.svg">پیگیری درخواست</a><p>کد رهگیری و شماره تماس، پیام عمومی یافت نشدن.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/customer/04-request-details.svg" alt="P04 جزئیات درخواست"></div><div class="cap"><div class="id">P04 · مشتری</div><a href="images/customer/04-request-details.svg">جزئیات درخواست</a><p>فیلدهای مجاز BR-06 و عملیات مشروط.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/customer/05-customer-decision.svg" alt="P05 تصمیم مشتری"></div><div class="cap"><div class="id">P05 · مشتری</div><a href="images/customer/05-customer-decision.svg">تصمیم درباره پیشنهاد</a><p>پذیرش و رد همراه با تأیید نهایی.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/customer/06-cancel-request.svg" alt="P06 لغو درخواست"></div><div class="cap"><div class="id">P06 · مشتری</div><a href="images/customer/06-cancel-request.svg">لغو درخواست</a><p>پنجره تأیید و مرز پیش از شروع تعمیر.</p></div></div>
     </div>
   </section>
 
   <section id="staff" hidden>
     <div class="grid">
-      <div class="card"><div class="viewport"><img src="images/staff/07-staff-login.svg" alt="P07 Staff Login"></div><div class="cap"><div class="id">P07 · STAFF</div><a href="images/staff/07-staff-login.svg">Staff Login</a><p>Credentials and failed-login state.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/staff/08-staff-dashboard.svg" alt="P08 Staff Dashboard"></div><div class="cap"><div class="id">P08 · STAFF</div><a href="images/staff/08-staff-dashboard.svg">Staff Dashboard</a><p>Role-aware counters, no analytics.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/staff/09-requests-list.svg" alt="P09 Repair Requests List"></div><div class="cap"><div class="id">P09 · STAFF</div><a href="images/staff/09-requests-list.svg">Repair Requests List</a><p>Search, status filter, empty state.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/staff/10-staff-request-details.svg" alt="P10 Staff Request Details"></div><div class="cap"><div class="id">P10 · STAFF</div><a href="images/staff/10-staff-request-details.svg">Staff Request Details</a><p>Full internal record and status history.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/staff/11-device-reception.svg" alt="P11 Device Reception"></div><div class="cap"><div class="id">P11 · SERVICE EXPERT</div><a href="images/staff/11-device-reception.svg">Device Reception</a><p>Match/mismatch correction path.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/staff/12-inspection-warranty.svg" alt="P12 Inspection and Warranty"></div><div class="cap"><div class="id">P12 · SERVICE EXPERT</div><a href="images/staff/12-inspection-warranty.svg">Inspection &amp; Warranty</a><p>1..N defects, two warranty paths.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/staff/13-repair-proposal.svg" alt="P13 Repair Proposal"></div><div class="cap"><div class="id">P13 · SERVICE EXPERT</div><a href="images/staff/13-repair-proposal.svg">Repair Proposal</a><p>IRR amount, validation, customer preview.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/staff/14-repair-management.svg" alt="P14 Repair Management"></div><div class="cap"><div class="id">P14 · TECHNICIAN</div><a href="images/staff/14-repair-management.svg">Repair Management</a><p>Start repair and operation entries.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/staff/15-repair-testing.svg" alt="P15 Repair Testing"></div><div class="cap"><div class="id">P15 · TECHNICIAN</div><a href="images/staff/15-repair-testing.svg">Repair Testing</a><p>PASSED / FAILED and repeated tests.</p></div></div>
-      <div class="card"><div class="viewport"><img src="images/staff/16-staff-management.svg" alt="P16 Staff Management"></div><div class="cap"><div class="id">P16 · ADMIN</div><a href="images/staff/16-staff-management.svg">Staff Management</a><p>Create accounts, roles, activation.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/staff/07-staff-login.svg" alt="P07 ورود کارکنان"></div><div class="cap"><div class="id">P07 · کارکنان</div><a href="images/staff/07-staff-login.svg">ورود کارکنان</a><p>اطلاعات ورود و حالت خطا.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/staff/08-staff-dashboard.svg" alt="P08 داشبورد کارکنان"></div><div class="cap"><div class="id">P08 · کارکنان</div><a href="images/staff/08-staff-dashboard.svg">داشبورد کارکنان</a><p>شمارش بر اساس نقش، بدون تحلیل.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/staff/09-requests-list.svg" alt="P09 فهرست درخواستها"></div><div class="cap"><div class="id">P09 · کارکنان</div><a href="images/staff/09-requests-list.svg">فهرست درخواستها</a><p>جستجو، فیلتر وضعیت، حالت خالی.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/staff/10-staff-request-details.svg" alt="P10 جزئیات درخواست کارکنان"></div><div class="cap"><div class="id">P10 · کارکنان</div><a href="images/staff/10-staff-request-details.svg">جزئیات درخواست</a><p>سوابق کامل داخلی و تاریخچه وضعیت.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/staff/11-device-reception.svg" alt="P11 دریافت دستگاه"></div><div class="cap"><div class="id">P11 · کارشناس خدمات</div><a href="images/staff/11-device-reception.svg">دریافت دستگاه</a><p>مسیر تطابق و اصلاح مغایرت.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/staff/12-inspection-warranty.svg" alt="P12 کارشناسی و گارانتی"></div><div class="cap"><div class="id">P12 · کارشناس خدمات</div><a href="images/staff/12-inspection-warranty.svg">کارشناسی و گارانتی</a><p>چندین ایراد و دو مسیر گارانتی.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/staff/13-repair-proposal.svg" alt="P13 پیشنهاد هزینه"></div><div class="cap"><div class="id">P13 · کارشناس خدمات</div><a href="images/staff/13-repair-proposal.svg">پیشنهاد هزینه</a><p>مبلغ ریالی، اعتبارسنجی، پیشنمایش مشتری.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/staff/14-repair-management.svg" alt="P14 مدیریت تعمیر"></div><div class="cap"><div class="id">P14 · تعمیرکار</div><a href="images/staff/14-repair-management.svg">مدیریت تعمیر</a><p>شروع تعمیر و ثبت عملیات.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/staff/15-repair-testing.svg" alt="P15 آزمون تعمیر"></div><div class="cap"><div class="id">P15 · تعمیرکار</div><a href="images/staff/15-repair-testing.svg">آزمون تعمیر</a><p>موفق/ناموفق و تکرار آزمون.</p></div></div>
+      <div class="card"><div class="viewport"><img src="images/staff/16-staff-management.svg" alt="P16 مدیریت کارکنان"></div><div class="cap"><div class="id">P16 · مدیر سامانه</div><a href="images/staff/16-staff-management.svg">مدیریت کارکنان</a><p>ایجاد حساب، نقش و وضعیت فعالیت.</p></div></div>
     </div>
   </section>
 
-  <h2>Main flows</h2>
+  <h2>جریانهای اصلی</h2>
   <table>
-    <tr><th>Flow</th><th>Path</th></tr>
-    <tr><td>1 — Submit request</td><td>Home → Submit → tracking code → Track</td></tr>
-    <tr><td>2 — In warranty</td><td>Register → Receive → Inspect (ELIGIBLE) → Ready → Repair → Test PASSED → Completed</td></tr>
-    <tr><td>3 — Out of warranty</td><td>Register → Receive → Inspect (NOT_ELIGIBLE) → Proposal → Accept → Repair → Completed / Reject → Cancelled</td></tr>
-    <tr><td>4 — Failed test</td><td>Start repair → Operations → Test FAILED → More operations → Retest PASSED → Completed</td></tr>
-    <tr><td>5 — Track and cancel</td><td>Track (code + phone) → Details → Cancel if before IN_REPAIR</td></tr>
+    <tr><th>جریان</th><th>مسیر</th></tr>
+    <tr><td>۱ — ثبت درخواست</td><td>صفحه اصلی → ثبت درخواست → کد رهگیری → پیگیری</td></tr>
+    <tr><td>۲ — دارای گارانتی</td><td>ثبت → دریافت → کارشناسی (ELIGIBLE) → آماده تعمیر → تعمیر → آزمون موفق → تکمیل</td></tr>
+    <tr><td>۳ — خارج از گارانتی</td><td>ثبت → دریافت → کارشناسی (NOT_ELIGIBLE) → پیشنهاد هزینه → پذیرش → تعمیر → تکمیل / رد → لغو</td></tr>
+    <tr><td>۴ — آزمون ناموفق</td><td>شروع تعمیر → عملیات → آزمون ناموفق → عملیات بیشتر → آزمون مجدد → تکمیل</td></tr>
+    <tr><td>۵ — پیگیری و لغو</td><td>پیگیری (کد + شماره تماس) → جزئیات → لغو در صورت مجاز بودن</td></tr>
   </table>
 </main>
-<footer>GaranTech · wireframes for review only · no implementation, no backend, no external integrations</footer>
+<footer>GaranTech · وایرفریمها فقط برای بازبینیاند · بدون پیادهسازی، بکاند یا یکپارچگی خارجی</footer>
 <script>
 function show(which){
   document.getElementById('customer').hidden = which !== 'customer';

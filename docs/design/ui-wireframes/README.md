@@ -1,84 +1,84 @@
-# GaranTech — UI Wireframes
+# GaranTech — وایرفریمهای رابط کاربری
 
-**Task:** Low-Fidelity UI Wireframes  
-**Assignee:** Arash Farhadi-Rad  
-**Status:** Draft for team review  
-**Branch:** `docs/ui-wireframes`  
-**Basis:** SRS v0.3, Use Cases (UC-01…UC-12), Activity Diagram, Logical Data Model, ERD, Architecture docs, `docs/prototype/`
+**تسک:** طراحی وایرفریم رابط کاربری (Low-Fidelity)  
+**مسئول:** آرش فرهادی راد  
+**وضعیت:** پیشنویس برای بازبینی تیمی  
+**شاخه:** `docs/ui-wireframes`  
+**مبنا:** SRS نسخه ۰٫۳، موارد کاربرد (UC-01…UC-12)، نمودار فعالیت، مدل داده منطقی، ERD، مستندات معماری و `docs/prototype/`
 
 ---
 
-## 1. Purpose
+## ۱. هدف
 
-Define page structure, element placement, navigation paths, and UI feedback for every GaranTech screen **before implementation**. These are low-fidelity wireframes: grayscale boxes and labels only — no final colors, icons, animation, or visual polish.
+تعیین ساختار صفحات، محل قرارگیری عناصر، مسیر حرکت کاربر و بازخورد رابط کاربری برای تمام صفحات GaranTech **پیش از شروع پیادهسازی**. وایرفریمها کمّیاند (Low-Fidelity): فقط جعبهها و برچسبهای تکفام؛ بدون رنگ نهایی، آیکون، انیمیشن یا پرداخت بصری.
 
-Authority rule: **SRS v0.3 is the source of truth.** Where the task brief and the SRS disagree, the SRS wins and the difference is logged in [consistency-review.md](consistency-review.md).
+قاعده مرجعیت: **SRS نسخه ۰٫۳ مبنا است.** هر جا که فایل تسک با SRS مغایرت داشته باشد، SRS حاکم است و اختلاف در [consistency-review.md](consistency-review.md) ثبت میشود.
 
-## 2. Tool used
+## ۲. ابزار استفادهشده
 
-| Item | Decision |
+| مورد | تصمیم |
 |---|---|
-| Authoring | SVG 1.1, plain text, version-controlled |
-| Preview | [index.html](index.html) — browsable gallery of all 16 frames |
-| Figma source file | **Not provided.** No Figma account/file was available. SVGs are vector and can be imported into Figma; no Figma URL is claimed. |
+| ابزار تهیه | SVG 1.1 متنی و قابل نگهداری در Git |
+| پیشنمایش | [index.html](index.html) — گالری قابل مرور تمام ۱۶ فریم |
+| فایل منبع Figma | **ارائه نشد.** حساب یا فایل Figma در دسترس نبود. SVGها برداریاند و قابل وارد کردن به Figmaاند؛ هیچ آدرس Figmaای ساخته نشده است. |
 
-Figma link: **N/A — substitute deliverable is the SVG set + gallery.** Confirm with the project manager if an actual `.fig` file is required.
+لینک Figma: **موجود نیست — خروجی جایگزین، مجموعه SVG به همراه گالری است.** در صورت لزوم فایل `.fig` باید توسط فردی با دسترسی Figma وارد و لینک واقعی آن اضافه شود.
 
-## 3. Pages designed
+## ۳. صفحات طراحیشده
 
-### Customer (mobile-width) — no account, no login
+### مشتری (عرض موبایل) — بدون حساب و بدون ورود
 
-| ID | Page | Wireframe | Main states |
+| شناسه | صفحه | وایرفریم | حالتهای اصلی |
 |---|---|---|---|
-| P01 | Home | [01-home.svg](images/customer/01-home.svg) | Initial |
-| P02 | Submit Repair Request | [02-submit-request.svg](images/customer/02-submit-request.svg) | Validation, out-of-scope, success, loading |
-| P03 | Track Request | [03-track-request.svg](images/customer/03-track-request.svg) | Empty, not-found, loading, success |
-| P04 | Request Details | [04-request-details.svg](images/customer/04-request-details.svg) | Conditional actions, BR-06 allowlist |
-| P05 | Customer Decision | [05-customer-decision.svg](images/customer/05-customer-decision.svg) | Confirmation, rejection, loading |
-| P06 | Cancel Request | [06-cancel-request.svg](images/customer/06-cancel-request.svg) | Confirmation, blocked, success |
+| P01 | صفحه اصلی | [01-home.svg](images/customer/01-home.svg) | اولیه |
+| P02 | ثبت درخواست تعمیر | [02-submit-request.svg](images/customer/02-submit-request.svg) | اعتبارسنجی، خارج از محدوده، موفقیت، بارگذاری |
+| P03 | پیگیری درخواست | [03-track-request.svg](images/customer/03-track-request.svg) | خالی، یافت نشدن، بارگذاری، موفقیت |
+| P04 | جزئیات درخواست | [04-request-details.svg](images/customer/04-request-details.svg) | عملیات مشروط، فهرست مجاز BR-06 |
+| P05 | تصمیم مشتری | [05-customer-decision.svg](images/customer/05-customer-decision.svg) | تأیید، رد، بارگذاری |
+| P06 | لغو درخواست | [06-cancel-request.svg](images/customer/06-cancel-request.svg) | تأیید، مسدود، موفقیت |
 
-### Staff (desktop-width) — role-gated
+### کارکنان (عرض دسکتاپ) — محدود بر اساس نقش
 
-| ID | Page | Wireframe | Role | Main states |
+| شناسه | صفحه | وایرفریم | نقش | حالتهای اصلی |
 |---|---|---|---|---|
-| P07 | Staff Login | [07-staff-login.svg](images/staff/07-staff-login.svg) | All staff | Validation, failed login |
-| P08 | Staff Dashboard | [08-staff-dashboard.svg](images/staff/08-staff-dashboard.svg) | Role-specific | Empty, loading, role filtering |
-| P09 | Repair Requests List | [09-requests-list.svg](images/staff/09-requests-list.svg) | All staff | Search, filter, empty |
-| P10 | Staff Request Details | [10-staff-request-details.svg](images/staff/10-staff-request-details.svg) | All staff | Full internal view, role-gated actions |
-| P11 | Device Reception | [11-device-reception.svg](images/staff/11-device-reception.svg) | Service Expert | Mismatch path, blocked before save |
-| P12 | Inspection & Warranty | [12-inspection-warranty.svg](images/staff/12-inspection-warranty.svg) | Service Expert | 1..N defects, two warranty paths |
-| P13 | Repair Proposal | [13-repair-proposal.svg](images/staff/13-repair-proposal.svg) | Service Expert | Blocked, amount validation, preview |
-| P14 | Repair Management | [14-repair-management.svg](images/staff/14-repair-management.svg) | Technician | Start, operations, validation |
-| P15 | Repair Testing | [15-repair-testing.svg](images/staff/15-repair-testing.svg) | Technician | PASSED / FAILED, repeated tests |
-| P16 | Staff Management | [16-staff-management.svg](images/staff/16-staff-management.svg) | Admin | Duplicate username, activate/deactivate |
+| P07 | ورود کارکنان | [07-staff-login.svg](images/staff/07-staff-login.svg) |همه کارکنان | اعتبارسنجی، ورود ناموفق |
+| P08 | داشبورد کارکنان | [08-staff-dashboard.svg](images/staff/08-staff-dashboard.svg) | متناسب نقش | خالی، بارگذاری، فیلتر نقش |
+| P09 | فهرست درخواستها | [09-requests-list.svg](images/staff/09-requests-list.svg) |همه کارکنان | جستجو، فیلتر، خالی |
+| P10 | جزئیات درخواست کارکنان | [10-staff-request-details.svg](images/staff/10-staff-request-details.svg) |همه کارکنان | نمای کامل داخلی، عملیات بر اساس نقش |
+| P11 | دریافت دستگاه | [11-device-reception.svg](images/staff/11-device-reception.svg) | کارشناس خدمات | مسیر مغایرت، مسدود پیش از ثبت |
+| P12 | کارشناسی و گارانتی | [12-inspection-warranty.svg](images/staff/12-inspection-warranty.svg) | کارشناس خدمات | ۱ تا N ایراد، دو مسیر گارانتی |
+| P13 | پیشنهاد هزینه | [13-repair-proposal.svg](images/staff/13-repair-proposal.svg) | کارشناس خدمات | مسدود، اعتبارسنجی مبلغ، پیشنمایش |
+| P14 | مدیریت تعمیر | [14-repair-management.svg](images/staff/14-repair-management.svg) | تعمیرکار | شروع، عملیاتها، اعتبارسنجی |
+| P15 | آزمون تعمیر | [15-repair-testing.svg](images/staff/15-repair-testing.svg) | تعمیرکار | PASSED / FAILED، آزمونهای تکراری |
+| P16 | مدیریت کارکنان | [16-staff-management.svg](images/staff/16-staff-management.svg) | مدیر سامانه | تکراری بودن نام کاربری، فعال/غیرفعال |
 
-## 4. Roles covered
+## ۴. نقشهای پوششدادهشده
 
-| Role | Pages | Notes |
+| نقش | صفحات | توضیح |
 |---|---|---|
-| Customer | P01–P06 | No account. Verification = tracking code **+** registered phone. |
-| Service Expert | P07–P10, P11, P12, P13 | Receives device, inspects, sets warranty manually, proposes cost. |
-| Technician | P07–P10, P14, P15 | Starts repair, records operations and test results. |
-| Admin | P07–P10, P16 | Monitors requests (list + filter + details), manages staff accounts. |
+| مشتری | P01–P06 | بدون حساب. احراز = کد رهگیری **و** شماره تماس ثبتشده. |
+| کارشناس خدمات | P07–P10، P11، P12، P13 | دریافت، کارشناسی، تعیین دستی گارانتی، پیشنهاد هزینه. |
+| تعمیرکار | P07–P10، P14، P15 | شروع تعمیر، ثبت عملیات و نتایج آزمون. |
+| مدیر سامانه | P07–P10، P16 | نظارت بر درخواستها (فهرست + فیلتر + جزئیات)، مدیریت حسابها. |
 
-No shared dashboard with identical capabilities across roles. Backend enforces all permissions; UI hiding is not authorization.
+داشبورد واحد با قابلیتهای یکسان برایهمه نقشها وجود ندارد. بکاند تمام مجوزها را اعمال میکند؛ پنهان کردن دکمه در رابط، مجوزدهی محسوب نمیشود.
 
-## 5. Main flows
+## ۵. جریانهای اصلی
 
-| Flow | Path | Detail |
+| جریان | مسیر | جزئیات |
 |---|---|---|
-| 1 — Submit request | P01 → P02 → tracking code → P03 | [customer-flows.md](customer-flows.md#flow-1--submit-request) |
-| 2 — In-warranty repair | P02 → P11 → P12 (ELIGIBLE) → P14 → P15 (PASSED) → P04 | [staff-flows.md](staff-flows.md#flow-2--in-warranty-repair) |
-| 3 — Out-of-warranty repair | P02 → P11 → P12 (NOT_ELIGIBLE) → P13 → P05 → P14 → P15 → P04 | both docs |
-| 4 — Failed test and retry | P14 (IN_REPAIR) → P15 (FAILED) → P14 → P15 (PASSED) | [staff-flows.md](staff-flows.md#flow-4--failed-test-and-retry) |
-| 5 — Track and cancel | P03 → P04 → P06 (if allowed) | [customer-flows.md](customer-flows.md#flow-5--track-and-cancel) |
+| ۱ — ثبت درخواست | P01 → P02 → کد رهگیری → P03 | [customer-flows.md](customer-flows.md#flow-1--ثبت-درخواست) |
+| ۲ — تعمیر دارای گارانتی | P02 → P11 → P12 (ELIGIBLE) → P14 → P15 (PASSED) → P04 | [staff-flows.md](staff-flows.md#flow-2--تعمیر-دارای-گارانتی) |
+| ۳ — تعمیر خارج از گارانتی | P02 → P11 → P12 (NOT_ELIGIBLE) → P13 → P05 → P14 → P15 → P04 | هر دو سند |
+| ۴ — آزمون ناموفق | P14 (IN_REPAIR) → P15 (FAILED) → P14 → P15 (PASSED) | [staff-flows.md](staff-flows.md#flow-4--آزمون-ناموفق-و-تعمیر-مجدد) |
+| ۵ — پیگیری و لغو | P03 → P04 → P06 (در صورت مجاز بودن) | [customer-flows.md](customer-flows.md#flow-5--پیگیری-و-لغو) |
 
-Rejecting the proposal ends at `CANCELLED` and never enters repair.
+رد پیشنهاد هزینه به `CANCELLED` ختم میشود و هرگز وارد مرحله تعمیر نمیشود.
 
-## 6. Deliberate exclusions
+## ۶. موارد حذفشده از محدوده
 
-Customer signup/login, online payment, parts inventory, external warranty services, SMS/email integrations, advanced analytics, accounting. Inline success/error messages are UI-only.
+ثبتنام و ورود مشتری، پرداخت آنلاین، انبار قطعات، اتصال به شرکتهای گارانتی خارجی، پیامک/ایمیل خارجی، گزارشهای تحلیلی پیشرفته، حسابداری. پیامهای موفقیت و خطا فقط داخلیاند.
 
-## 7. Review
+## ۷. بازبینی
 
-See [consistency-review.md](consistency-review.md) for: conflict flags against the task brief, SRS/UC/Activity-Diagram traceability, role matrix, UI-state coverage, and the final acceptance checklist.
+[consistency-review.md](consistency-review.md) شامل: پرچمهای مغایرت با فایل تسک، ردیابی به SRS/موارد کاربرد/نمودار فعالیت، ماتریس نقشها، پوشش حالتهای رابط و چکلیست نهایی پذیرش است.

@@ -1,101 +1,101 @@
-# Wireframe Consistency Review
+# بازبینی یکپارچگی وایرفریمها
 
-**Date:** 2026-11-16  
-**Scope:** 16 wireframes vs. task brief, SRS v0.3, Use Cases, Activity Diagram, data model, architecture docs, and `docs/design/consistency-review.md`.  
-**Authority:** SRS v0.3 and existing design docs override the task brief where they conflict. The task brief itself requires this ("design based on existing requirements; do not add undefined features without PM coordination").
-
----
-
-## 1. Resolved conflicts
-
-### CR-01 — Customer detail scope
-
-| | |
-|---|---|
-| **Task brief** | Page 4 asks for device specs, initial problem description, and **status change history** in the customer view. |
-| **Project docs** | BR-06: customer sees only current status, inspection result, proposed cost. `CustomerTrackingView` DTO allowlist: trackingCode, currentStatus, warrantyResult, recommendedAction, diagnosedDefects, estimatedTotalCost. Prior review CR-09 says device info must be removed from the customer view. |
-| **Decision** | Wireframe P04 follows the SRS: allowlisted fields only. Full history, device specs, repair operations, and internal notes are excluded. |
-| **PM action** | Confirm whether BR-06 should be relaxed. If yes, update SRS, UC-09, `CustomerTrackingView`, and the API contract first — then P04 can be extended. Do not add it to the UI alone. |
-
-### CR-02 — Dashboard counters vs. "no analytics"
-
-| | |
-|---|---|
-| **Task brief** | Page 8 suggests counters for new, awaiting reception, awaiting inspection, ready, in repair, completed. Section 8 also forbids advanced statistical reports. Section 7 says avoid out-of-scope capabilities. |
-| **Project docs** | SRS §7 excludes "admin statistical reports"; FR-15 permits a status-filtered list and detail view only. |
-| **Decision** | P08 shows four operational queue counters (awaiting reception, awaiting inspection, ready, in repair) as navigation aids. No charts, trends, KPIs, or historical reporting. "Completed" is terminal and is not a work queue. |
-| **PM action** | Confirm the four-counter interpretation is acceptable. |
-
-### CR-03 — Figma source file and link
-
-| | |
-|---|---|
-| **Task brief** | Expected output: a Figma (or similar tool) source file and a Figma link in README. |
-| **Reality** | No Figma account or `.fig` file available in this workspace. |
-| **Decision** | Delivered plain-text SVG wireframes (vector, Figma-importable) plus an HTML gallery. README states `Figma link: N/A` instead of inventing a URL. |
-| **PM action** | If a `.fig` file is mandatory, someone with Figma access must import the SVGs and add the real link. |
-
-### CR-04 — "View each employee" on P16
-
-Task page 16 asks to view each employee's information. P16 shows a staff table with name, phone, username, role, and status, plus change-role and activate/deactivate actions. No password or hash is displayed. This satisfies FR-15 without adding account features outside scope.
+**تاریخ:** 2026-11-16  
+**محدوده:** ۱۶ وایرفریم در برابر فایل تسک، SRS نسخه ۰٫۳، موارد کاربرد، نمودار فعالیت، مدل داده، مستندات معماری و `docs/design/consistency-review.md`.  
+**مرجعیت:** SRS نسخه ۰٫۳ و مستندات طراحی موجود بر فایل تسک حاکماند. خود فایل تسک نیز تصریح میکند که طراحی بر اساس نیازمندیهای موجود باشد و قابلیت تعریفنشده بدون هماهنگی اضافه نشود.
 
 ---
 
-## 2. Consistency checks passed
+## ۱. مغایرتهای حلشده
 
-| Check | Result |
+### CR-01 — محدوده جزئیات درخواست مشتری
+
+| | |
 |---|---|
-| All 16 task pages have a wireframe (task pages 1–16 → P01–P16) | Pass |
-| Customer has no signup/login surface | Pass (P01–P06) |
-| Customer verification uses tracking code **and** phone | Pass (P03; ADR-006) |
-| Customer view contains no staff/internal/history data | Pass (P04, P05; BR-06, CR-09) |
-| Warranty status entered manually by Service Expert | Pass (P12; BR-09) |
-| ELIGIBLE path skips proposal and customer decision | Pass (P12 → P14) |
-| NOT_ELIGIBLE path creates one proposal before repair | Pass (P12 → P13 → P05 → P14) |
-| `NOT_ELIGIBLE` requires rejection reason | Pass (P12; IC-07) |
-| One or more defects and one or more operations | Pass (P12, P14; IC-08, IC-14) |
-| Proposal amount numeric and greater than zero, IRR | Pass (P13; IC-15) |
-| Repair starts only from READY_FOR_REPAIR | Pass (P14; IC-12) |
-| Customer cancel blocked at/after IN_REPAIR | Pass (P04, P06; BR-07) |
-| FAILED keeps IN_REPAIR; PASSED sets COMPLETED | Pass (P15; BR-11, BR-12, IC-18, IC-19) |
-| Repeated tests preserved | Pass (P15) |
-| Role-specific workspaces, no shared dashboard | Pass (P08 + role matrix) |
-| Backend authorization explicitly required | Pass (README, staff-flows, P10, P16; ADR-008) |
-| Loading / empty / error / validation / success / confirmation states | Pass — annotated on every frame |
-| Out-of-scope features absent | Pass — no customer auth, payment, inventory, external warranty, SMS/email, analytics, accounting |
-| Status names and technical enums match SRS/UC-12 | Pass — 8 statuses, `READY_FOR_REPAIR` (no `APPROVED`) |
-| 13 domain entities represented in staff detail view | Pass (P10) |
+| **فایل تسک** | صفحه ۴ مشخصات دستگاه، شرح مشکل و **تاریخچه تغییر وضعیتها** را در نمای مشتری خواسته است. |
+| **مستندات پروژه** | BR-06: مشتری فقط وضعیت فعلی، نتیجه کارشناسی و هزینه پیشنهادی را میبیند. DTOای `CustomerTrackingView` شامل: trackingCode، currentStatus، warrantyResult، recommendedAction، diagnosedDefects، estimatedTotalCost. بازبینی قبلی CR-09 نیز میگوید اطلاعات دستگاه باید از نمای مشتری حذف شود. |
+| **تصمیم** | وایرفریم P04 مطابق SRS و فقط فیلدهای مجاز را نشان میدهد. تاریخچه کامل، مشخصات دستگاه، عملیات تعمیر و یادداشتهای داخلی حذف شدند. |
+| **اقدام مدیر پروژه** | مشخص شود آیا BR-06 قابل تخفیف است یا خیر. در صورت بله، ابتدا SRS، UC-09، `CustomerTrackingView` و قرارداد API بهروز شوند — سپس P04 قابل گسترش است. نباید فقط در رابط اضافه شود. |
 
-## 3. Flow coverage
+### CR-02 — شمارش داشبورد در برابر «بدون تحلیل»
 
-| Task flow | Covered | Where |
+| | |
+|---|---|
+| **فایل تسک** | صفحه ۸ شمارش درخواستهای جدید، در انتظار دریافت، در انتظار بررسی، آماده تعمیر، در حال تعمیر و تکمیلشده را پیشنهاد میکند؛ بخش ۸ گزارشهای تحلیلی پیشرفته را منع میکند. |
+| **مستندات پروژه** | SRS بخش ۷ گزارشهای آماری مدیر را خارج از محدوده میداند؛ FR-15 فقط فهرست با فیلتر وضعیت و صفحه جزئیات را مجاز میداند. |
+| **تصمیم** | P08 چهار شمارش عملیاتی صف (در انتظار دریافت، در انتظار کارشناسی، آماده تعمیر، در حال تعمیر) بهعنوان راهنمای ناوبری نشان میدهد. نمودار، روند، شاخص و گزارش تاریخی وجود ندارد. «تکمیلشده» وضعیت پایانی است و صف کاری محسوب نمیشود. |
+| **اقدام مدیر پروژه** | تأیید شود که چهار شمارش عملیاتی قابل قبولاند. |
+
+### CR-03 — فایل منبع و لینک Figma
+
+| | |
+|---|---|
+| **فایل تسک** | خروجی مورد انتظار: فایل منبع Figma (یا ابزار مشابه) و لینک Figma در README. |
+| **واقعیت** | حساب یا فایل `.fig` در محیط کار در دسترس نبود. |
+| **تصمیم** | وایرفریمهای SVG متنی (برداری، قابل وارد کردن به Figma) به همراه گالری HTML تحویل شدند. README صریحاً میگوید «لینک Figma: موجود نیست» به جای ساختن آدرس جعلی. |
+| **اقدام مدیر پروژه** | در صورت الزام فایل `.fig`، فردی با دسترسی Figma باید SVGها را وارد کرده و لینک واقعی را اضافه کند. |
+
+### CR-04 — «مشاهده اطلاعات هر کارمند» در P16
+
+فایل تسک صفحه ۱۶ خواستار مشاهده اطلاعات هر کارمند است. P16 جدول کارکنان را با نام، شماره تماس، نام کاربری، نقش و وضعیت نشان میدهد و عملیات تغییر نقش و فعال/غیرفعال کردن را دارد. رمز یا هش رمز نمایش داده نمیشود. این مورد FR-15 را پوشش میدهد و قابلیت خارج از محدودهای اضافه نمیکند.
+
+---
+
+## ۲. بررسیهای موفق
+
+| بررسی | نتیجه |
+|---|---|
+|همه ۱۶ صفحه فایل تسک دارای وایرفریماند (صفحات ۱–۱۶ → P01–P16) | موفق |
+| مشتری هیچ سطح ثبتنام/ورودی ندارد | موفق (P01–P06) |
+| احراز مشتری با کد رهگیری **و** شماره تماس | موفق (P03؛ ADR-006) |
+| نمای مشتری فاقد اطلاعات کارکنان، داخلی و تاریخچه است | موفق (P04، P05؛ BR-06، CR-09) |
+| وضعیت گارانتی بهصورت دستی توسط کارشناس وارد میشود | موفق (P12؛ BR-09) |
+| مسیر ELIGIBLE بدون پیشنهاد و تصمیم مشتری است | موفق (P12 → P14) |
+| مسیر NOT_ELIGIBLE یک پیشنهاد پیش از تعمیر ایجاد میکند | موفق (P12 → P13 → P05 → P14) |
+| NOT_ELIGIBLE مستلزم دلیل رد است | موفق (P12؛ IC-07) |
+| حداقل یک ایراد و یک عملیات | موفق (P12، P14؛ IC-08، IC-14) |
+| مبلغ پیشنهاد عددی، بزرگتر از صفر و به ریال | موفق (P13؛ IC-15) |
+| شروع تعمیر فقط از READY_FOR_REPAIR | موفق (P14؛ IC-12) |
+| لغو مشتری در IN_REPAIR و پس از آن مسدود است | موفق (P04، P06؛ BR-07) |
+| FAILED وضعیت را IN_REPAIR نگه میدارد؛ PASSED آن را COMPLETED میکند | موفق (P15؛ BR-11، BR-12، IC-18، IC-19) |
+| آزمونهای تکراری حفظ میشوند | موفق (P15) |
+| داشبوردهای متناسب نقش، بدون داشبورد مشترک | موفق (P08 + ماتریس نقش) |
+| مجوزدهی بکاند صریحاً ذکر شده است | موفق (README، staff-flows، P10، P16؛ ADR-008) |
+| حالتهای بارگذاری/خالی/خطا/اعتبارسنجی/موفقیت/تأیید | موفق — رویهمه ۱۶ فریم درج شدهاند |
+| قابلیتهای خارج از محدوده وجود ندارند | موفق — بدون احراز مشتری، پرداخت، انبار، گارانتی خارجی، پیامک/ایمیل، تحلیل، حسابداری |
+| نام وضعیتها و Enumها با SRS/UC-12 هماهنگاند | موفق — ۸ وضعیت، `READY_FOR_REPAIR` (بدون `APPROVED`) |
+| ۱۳ موجودیت دامنه در نمای جزئیات کارکنان حضور دارند | موفق (P10) |
+
+## ۳. پوشش جریانها
+
+| جریان فایل تسک | پوشش | محل |
 |---|---|---|
-| Flow 1 — Submit request | Yes | customer-flows.md §2 |
-| Flow 2 — In-warranty repair | Yes | staff-flows.md §3 |
-| Flow 3 — Out-of-warranty, accept and reject branches | Yes | both flow docs |
-| Flow 4 — Failed test and retry | Yes | staff-flows.md §5 |
-| Flow 5 — Track and cancel | Yes | customer-flows.md §4 |
+| جریان ۱ — ثبت درخواست | بله | customer-flows.md §Flow 1 |
+| جریان ۲ — تعمیر دارای گارانتی | بله | staff-flows.md §Flow 2 |
+| جریان ۳ — خارج از گارانتی، پذیرش و رد | بله | هر دو سند جریان |
+| جریان ۴ — آزمون ناموفق و تعمیر مجدد | بله | staff-flows.md §Flow 4 |
+| جریان ۵ — پیگیری و لغو | بله | customer-flows.md §Flow 5 |
 
-## 4. Acceptance checklist (task §11)
+## ۴. چکلیست پذیرش (فایل تسک بخش ۱۱)
 
-| Criterion | Status |
+| معیار | وضعیت |
 |---|---|
-| All main customer pages designed | Done — P01–P06 |
-| Staff and admin pages designed | Done — P07–P16 |
-| Repair flows with and without warranty | Done — Flow 2 and Flow 3 |
-| Proposal rejection and cancellation paths | Done — P05, P06 |
-| Failed test and rework path | Done — Flow 4 |
-| Role access reflected in UI | Done — role matrix + disabled/hidden actions |
-| Error, success, loading states | Done — state bands on all 16 frames |
-| Customer needs no account | Done — no login/signup on customer pages |
-| No out-of-scope feature added | Done — see exclusions |
-| Output in the required path, branch and PR | Files in `docs/design/ui-wireframes/`, branch `docs/ui-wireframes`; PR pending approval to push |
+|همه صفحات اصلی مشتری طراحی شوند | انجام — P01–P06 |
+| صفحات کارکنان و مدیر طراحی شوند | انجام — P07–P16 |
+| جریانهای تعمیر با و بدون گارانتی | انجام — جریان ۲ و ۳ |
+| مسیر رد پیشنهاد و لغو درخواست | انجام — P05، P06 |
+| مسیر آزمون ناموفق و تعمیر مجدد | انجام — جریان ۴ |
+| دسترسی نقشها در رابط لحاظ شود | انجام — ماتریس نقش و عملیات غیرفعال/پنهان |
+| حالتهای خطا، موفقیت و بارگذاری | انجام — نوار حالتها رویهمه ۱۶ فریم |
+| مشتری به حساب کاربری نیاز نداشته باشد | انجام — بدون ورود در صفحات مشتری |
+| قابلیت خارج از محدوده اضافه نشده باشد | انجام — بخش موارد حذفشده |
+| خروجی در مسیر، شاخه و PR تعیینشده | فایلها در `docs/design/ui-wireframes/`، شاخه `docs/ui-wireframes`؛ PR بنا به تصمیم کاربر ایجاد نشد |
 
-## 5. Open items for sign-off
+## ۵. موارد باقیمانده برای تأیید نهایی
 
-1. **CR-01** — PM decision on whether the customer view may include device specs, problem description, and status history. Current design follows BR-06.
-2. **CR-02** — Confirm four operational dashboard counters are acceptable.
-3. **CR-03** — Confirm SVG + gallery is acceptable instead of a `.fig` file, or provide Figma access.
-4. Team review of the end-to-end scenario (existing repo item CR-10) is still outstanding and is outside this wireframe task.
+1. **CR-01** — تصمیم مدیر پروژه درباره امکان نمایش مشخصات دستگاه، شرح مشکل و تاریخچه وضعیت به مشتری. طراحی فعلی BR-06 را رعایت میکند.
+2. **CR-02** — تأیید چهار شمارش عملیاتی داشبورد.
+3. **CR-03** — تأیید SVG + گالری به جای فایل `.fig`، یا فراهم کردن دسترسی Figma.
+4. بازبینی تیمی سناریوی سرتاسری (مورد CR-10 مخزن) همچنان باقی است و خارج از این تسک است.
 
-**Conclusion:** The wireframes are internally consistent with SRS v0.3, Use Cases, the Activity Diagram, the logical data model, and the approved architecture. The four items above need explicit PM/team confirmation before final sign-off.
+**نتیجه:** وایرفریمها از درون با SRS نسخه ۰٫۳، موارد کاربرد، نمودار فعالیت، مدل داده منطقی و معماری مصوب سازگارند. چهار مورد بالا پیش از امضای نهایی نیاز به تأیید صریح مدیر/تیم دارند.

@@ -1,124 +1,124 @@
-# Customer UI — Pages and Flows
+# رابط مشتری — صفحات و جریانها
 
-**Scope:** P01–P06, mobile usable. No account, no login.  
-**Authority:** SRS v0.3 BR-06, BR-07, BR-10; UC-01, UC-05, UC-06, UC-09; Activity Diagram.
+**محدوده:** P01–P06، قابل استفاده در موبایل. بدون حساب، بدون ورود.  
+**مرجع:** SRS نسخه ۰٫۳، BR-06، BR-07، BR-10؛ UC-01، UC-05، UC-06، UC-09؛ نمودار فعالیت.
 
-## 1. Page inventory
+## ۱. فهرست صفحات
 
-### P01 — Home (`01-home.svg`)
-- Short GaranTech introduction.
-- Primary CTA: **Submit Repair Request** → P02.
-- Secondary CTA: **Track Request** → P03.
-- Four-step process strip: register → hand in device → inspection → repair/test/track.
-- No login or signup entry point.
+### P01 — صفحه اصلی (`01-home.svg`)
+- معرفی کوتاه GaranTech.
+- دکمه اصلی: **ثبت درخواست تعمیر** → P02.
+- دکمه ثانویه: **پیگیری درخواست** → P03.
+- نوار چهارمرحلهای: ثبت → تحویل دستگاه → کارشناسی → تعمیر/آزمون/پیگیری.
+- هیچ مسیر ثبتنام یا ورودی وجود ندارد.
 
-### P02 — Submit Repair Request (`02-submit-request.svg`)
+### P02 — ثبت درخواست تعمیر (`02-submit-request.svg`)
 
-| Field | Constraint |
+| فیلد | قید |
 |---|---|
-| Full name | Required |
-| Phone number | Required, normalized |
-| Device category | Required — `MOBILE` or `LAPTOP` only |
-| Brand | Optional (FR-02 decision) |
-| Model | Required |
-| Serial number | Optional |
-| Initial problem description | Required |
+| نام و نام خانوادگی | اجباری |
+| شماره تلفن | اجباری، نرمالسازی میشود |
+| نوع دستگاه | اجباری — فقط `MOBILE` یا `LAPTOP` |
+| برند | اختیاری (تصمیم FR-02) |
+| مدل | اجباری |
+| شماره سریال | اختیاری |
+| شرح اولیه مشکل | اجباری |
 
-- `*` marks required; `(optional)` marks optional.
-- Validation errors appear under the offending field; no record is saved.
-- Out-of-scope category: message **"Out of system scope"**, no request created (UC-01 alternate 2a).
-- On success: request saved as `REGISTERED`, tracking code displayed, user told to hand in the device.
-- Notice states clearly that online submission is **not** physical reception (BR-02).
+- `*` نشان فیلد اجباری و `(اختیاری)` نشان فیلد اختیاری است.
+- خطای اعتبارسنجی زیر فیلد مربوط نمایش داده میشود؛ رکوردی ذخیره نمیشود.
+- دستگاه خارج از محدوده: پیام **«خارج از محدوده سامانه»** و بدون ثبت درخواست (UC-01، جریان جایگزین 2a).
+- پس از موفقیت: درخواست `REGISTERED` ذخیره، کد رهگیری نمایش و دستور تحویل حضوری داده میشود.
+- یادآوری صریح: ثبت آنلاین جایگزین تحویل فیزیکی نیست (BR-02).
 
-### P03 — Track Request (`03-track-request.svg`)
-- Two required inputs: **Tracking Code** and **Registered Phone Number**.
-- Both must match; verification applies to tracking, proposal decision, and cancellation (ADR-006).
-- Unknown code **and** wrong phone show the identical message **"Request not found"** — no existence leak (UC-09 alternate 1a).
-- On success → P04.
+### P03 — پیگیری درخواست (`03-track-request.svg`)
+- دو ورودی اجباری: **کد رهگیری** و **شماره تلفن ثبتشده**.
+- هر دو باید مطابقت داشته باشند؛ این بررسی برای پیگیری، تصمیم درباره پیشنهاد و لغو اعمال میشود (ADR-006).
+- کد ناموجود و شماره اشتباه هر دو پیام یکسان **«درخواستی یافت نشد»** میدهند — افشای وجود درخواست رخ نمیدهد (UC-09، جریان جایگزین 1a).
+- پس از موفقیت → P04.
 
-### P04 — Request Details (`04-request-details.svg`)
+### P04 — جزئیات درخواست (`04-request-details.svg`)
 
-Allowlisted content only (BR-06, `CustomerTrackingView`):
+فقط فیلدهای مجاز (BR-06، `CustomerTrackingView`):
 
-| Shown | Hidden |
+| نمایش داده میشود | نمایش داده نمیشود |
 |---|---|
-| Tracking code | Full status history |
-| Current status | Repair operations and test history |
-| Warranty result | Internal notes and staff notes |
-| Recommended action | Staff identities |
-| Diagnosed defects | Device specs beyond identification |
-| Proposed cost, when present | Internal proposal notes |
+| کد رهگیری | تاریخچه کامل وضعیتها |
+| وضعیت فعلی | عملیات و آزمونهای تعمیر |
+| وضعیت گارانتی | یادداشتهای داخلی و یادداشتهای کارکنان |
+| اقدام پیشنهادی | هویت کارکنان |
+| ایرادهای تشخیصدادهشده | مشخصات دستگاه فراتر از شناسایی |
+| هزینه پیشنهادی در صورت وجود | یادداشت داخلی پیشنهاد |
 
-Conditional actions:
-- `AWAITING_CUSTOMER_DECISION` → **Decide on Proposal** (P05).
-- Any of `REGISTERED`, `RECEIVED`, `INSPECTED`, `AWAITING_CUSTOMER_DECISION`, `READY_FOR_REPAIR` → **Cancel Request** (P06).
-- After `IN_REPAIR`: cancel action is hidden/disabled.
+عملیات مشروط:
+- `AWAITING_CUSTOMER_DECISION` → **تصمیم درباره پیشنهاد** (P05).
+- یکی از `REGISTERED`، `RECEIVED`، `INSPECTED`، `AWAITING_CUSTOMER_DECISION`، `READY_FOR_REPAIR` → **لغو درخواست** (P06).
+- پس از `IN_REPAIR`: دکمه لغو پنهان/غیرفعال است.
 
-**Conflict flag:** the task brief also asks for device specs, initial problem description, and full status history on this page. Those are excluded here because BR-06 and CR-09 prohibit them. See [consistency-review.md](consistency-review.md), item CR-01.
+**پرچم مغایرت:** فایل تسک صفحه ۴ مشخصات دستگاه، شرح مشکل و تاریخچه وضعیتها را نیز خواسته است. این موارد به دلیل BR-06 و CR-09 حذف شدند. به [consistency-review.md](consistency-review.md) مراجعه کنید.
 
-### P05 — Customer Decision (`05-customer-decision.svg`)
-- Visible only when warranty = `NOT_ELIGIBLE` and a proposal exists.
-- Shows warranty result, estimated total in **IRR**, proposal notes.
-- Optional customer note.
-- **Accept** → confirmation → `READY_FOR_REPAIR` → P04.
-- **Reject** → confirmation → `CANCELLED` → P04. Repair never starts (BR-05).
-- Concurrent change (status no longer awaiting) → operation rejected, no extra History row.
+### P05 — تصمیم مشتری (`05-customer-decision.svg`)
+- فقط زمانی که گارانتی `NOT_ELIGIBLE` و پیشنهادی ثبت شده باشد.
+- وضعیت گارانتی، مبلغ کل به **ریال** و توضیحات پیشنهاد را نشان میدهد.
+- یادداشت مشتری اختیاری است.
+- **پذیرش** → تأیید → `READY_FOR_REPAIR` → P04.
+- **رد** → تأیید → `CANCELLED` → P04. تعمیر آغاز نمیشود (BR-05).
+- تغییر همزمان وضعیت → عملیات رد میشود و رکورد تاریخچهای اضافه نمیشود.
 
-### P06 — Cancel Request (`06-cancel-request.svg`)
-- Reason is optional.
-- Confirmation dialog: **Confirm cancellation** / **Keep request**. Decline leaves status unchanged.
-- Allowed before `IN_REPAIR` only (BR-07). `CANCELLED`, `COMPLETED`, `IN_REPAIR` → disabled with reason.
-- On confirm: `CANCELLED`, `cancelled_at` recorded, result shown on P04.
+### P06 — لغو درخواست (`06-cancel-request.svg`)
+- دلیل لغو اختیاری است.
+- پنجره تأیید: **تأیید لغو** / **حفظ درخواست**. انصراف هیچ تغییری ایجاد نمیکند.
+- فقط پیش از `IN_REPAIR` مجاز است (BR-07). وضعیتهای `CANCELLED`، `COMPLETED`، `IN_REPAIR` → غیرفعال همراه با دلیل.
+- پس از تأیید: `CANCELLED` و ثبت `cancelled_at`؛ نتیجه در P04 نمایش داده میشود.
 
-## 2. Flow 1 — Submit request
-
-```
-P01 Home
-  └─ Submit Repair Request → P02
-       ├─ invalid / out-of-scope → inline error, no record
-       └─ valid → REGISTERED + tracking code → P03 Track
-```
-
-## 3. Flow 3 (customer part) — Out-of-warranty decision
+## Flow 1 — ثبت درخواست
 
 ```
-P03 Track (code + phone)
-  └─ P04 Details → AWAITING_CUSTOMER_DECISION
-       └─ Decide on Proposal → P05
-            ├─ Accept → READY_FOR_REPAIR → P04 → staff continue at P14
-            └─ Reject → CANCELLED → P04 (end)
+P01 صفحه اصلی
+  └─ ثبت درخواست → P02
+       ├─ نامعتبر / خارج از محدوده → خطای درون فرم، بدون ثبت
+       └─ معتبر → REGISTERED + کد رهگیری → P03 پیگیری
 ```
 
-## 4. Flow 5 — Track and cancel
+## جریان ۳ (بخش مشتری) — تصمیم خارج از گارانتی
 
 ```
-P03 Track → P04 Details
-  └─ status in {REGISTERED, RECEIVED, INSPECTED, AWAITING_CUSTOMER_DECISION, READY_FOR_REPAIR}
-       └─ P06 Cancel → confirm → CANCELLED → P04
-  └─ status in {IN_REPAIR, COMPLETED, CANCELLED}
-       └─ cancel disabled, reason shown
+P03 پیگیری (کد + شماره تماس)
+  └─ P04 جزئیات → AWAITING_CUSTOMER_DECISION
+       └─ تصمیم درباره پیشنهاد → P05
+            ├─ پذیرش → READY_FOR_REPAIR → P04 → ادامه کار تیمی از P14
+            └─ رد → CANCELLED → P04 (پایان)
 ```
 
-## 5. UI states
+## Flow 5 — پیگیری و لغو
 
-| State | Behavior on customer pages |
+```
+P03 پیگیری → P04 جزئیات
+  └─ وضعیت در {REGISTERED, RECEIVED, INSPECTED, AWAITING_CUSTOMER_DECISION, READY_FOR_REPAIR}
+       └─ P06 لغو → تأیید → CANCELLED → P04
+  └─ وضعیت در {IN_REPAIR, COMPLETED, CANCELLED}
+       └─ لغو غیرفعال است و دلیل نمایش داده میشود
+```
+
+## ۲. حالتهای رابط کاربری
+
+| حالت | رفتار در صفحات مشتری |
 |---|---|
-| Initial | Empty forms; CTAs enabled; no pre-filled session data. |
-| Loading | Submit/sign-in/verify buttons disabled; skeleton on P04 while details load. |
-| Empty | No saved requests to list; P03 still usable because tracking is explicit. |
-| Error | Out-of-scope device, failed verification, stale status → explicit message, no data leak. |
-| Validation | Required field empty, invalid phone, missing description → field-level message. |
-| Success | Tracking code on P02; allowlisted result on P04; new status after P05/P06. |
-| Confirmation | Mandatory on P05 (accept/reject) and P06 (cancel); decline is a no-op. |
-| Disabled | Cancel and decision actions disabled outside their allowed statuses. |
+| اولیه | فرمهای خالی؛ دکمهها فعال؛ هیچ داده نشستی پرشده نیست. |
+| بارگذاری | دکمههای ثبت/احراز هنگام ارسال غیرفعال؛ اسکلتون در P04. |
+| خالی | لیستی برای نمایش وجود ندارد؛ P03 چون پیگیری صریح است قابل استفاده است. |
+| خطا | دستگاه خارج از محدوده، احراز ناموفق، وضعیت منسوخ → پیام صریح بدون افشای داده. |
+| اعتبارسنجی | فیلد اجباری خالی، شماره نامعتبر، نبود شرح → پیام در سطح فیلد. |
+| موفقیت | کد رهگیری در P02؛ اطلاعات مجاز در P04؛ وضعیت جدید پس از P05/P06. |
+| تأیید | الزامی در P05 (پذیرش/رد) و P06 (لغو)؛ انصراف بدون تغییر است. |
+| غیرفعال | عملیات تصمیم و لغو خارج از وضعیت مجاز غیرفعالاند. |
 
-## 6. Traceability
+## ۳. ردیابی
 
-| Wireframe | Use case | Requirements |
+| وایرفریم | مورد کاربرد | نیازمندیها |
 |---|---|---|
-| P01 | UC-01 entry | FR-01 |
-| P02 | UC-01 | FR-01–04, BR-01, BR-02, BR-10, NFR-02 |
-| P03 | UC-09 | FR-13, BR-06, BR-10 |
-| P04 | UC-09 | FR-13, BR-06 |
-| P05 | UC-05 | FR-09, BR-04, BR-05 |
-| P06 | UC-06 | FR-14, BR-07 |
+| P01 | UC-01 | FR-01 |
+| P02 | UC-01 | FR-01–04، BR-01، BR-02، BR-10، NFR-02 |
+| P03 | UC-09 | FR-13، BR-06، BR-10 |
+| P04 | UC-09 | FR-13، BR-06 |
+| P05 | UC-05 | FR-09، BR-04، BR-05 |
+| P06 | UC-06 | FR-14، BR-07 |

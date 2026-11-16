@@ -1,138 +1,138 @@
-# Staff UI — Pages, Flows and Role Matrix
+# رابط کارکنان — صفحات، جریانها و ماتریس نقشها
 
-**Scope:** P07–P16, desktop-first. All staff accounts; backend enforces every permission.  
-**Authority:** SRS v0.3 FR-05–FR-12, FR-15, BR-03, BR-08, BR-09, BR-11, BR-12; UC-02–UC-04, UC-07, UC-08, UC-10–UC-12; Activity Diagram.
+**محدوده:** P07–P16، دسکتاپ در اولویت. همه حسابهای کارکنان؛ بکاند تمام مجوزها را اعمال میکند.  
+**مرجع:** SRS نسخه ۰٫۳، FR-05–FR-12، FR-15، BR-03، BR-08، BR-09، BR-11، BR-12؛ UC-02–UC-04، UC-07، UC-08، UC-10–UC-12؛ نمودار فعالیت.
 
-## 1. Role matrix
+## ۱. ماتریس نقشها
 
-| Action | Service Expert | Technician | Admin |
+| عملیات | کارشناس خدمات | تعمیرکار | مدیر سامانه |
 |---|:---:|:---:|:---:|
-| Login (P07) | Yes | Yes | Yes |
-| View requests list / details (P09, P10) | Yes | Yes | Yes |
-| Filter requests by status (P09) | Yes | Yes | Yes |
-| Receive device (P11) | **Yes** | No | No |
-| Inspect device / warranty (P12) | **Yes** | No | No |
-| Create cost proposal (P13) | **Yes** | No | No |
-| Start repair / record operations (P14) | No | **Yes** | No |
-| Record final test (P15) | No | **Yes** | No |
-| Create staff / change role / activate (P16) | No | No | **Yes** |
+| ورود (P07) | بله | بله | بله |
+| مشاهده فهرست و جزئیات درخواستها (P09، P10) | بله | بله | بله |
+| فیلتر درخواستها بر اساس وضعیت (P09) | بله | بله | بله |
+| دریافت دستگاه (P11) | **بله** | خیر | خیر |
+| کارشناسی و گارانتی (P12) | **بله** | خیر | خیر |
+| ثبت پیشنهاد هزینه (P13) | **بله** | خیر | خیر |
+| شروع تعمیر و ثبت عملیات (P14) | خیر | **بله** | خیر |
+| ثبت آزمون نهایی (P15) | خیر | **بله** | خیر |
+| ایجاد کارمند، تغییر نقش، فعال/غیرفعال (P16) | خیر | خیر | **بله** |
 
-Widgets and actions are filtered per role; hiding a button is not authorization. The backend re-checks role and status for every protected operation (ADR-008).
+ابزارکها و دکمهها بر اساس نقش فیلتر میشوند؛ پنهان کردن دکمه مجوزدهی نیست. بکاند برای هر عملیات محافظتشده نقش و وضعیت را دوباره بررسی میکند (ADR-008).
 
-## 2. Page inventory
+## ۲. فهرست صفحات
 
-### P07 — Staff Login
-Username, password, Sign In. Failed login shows an inline error. No customer login exists here.
+### P07 — ورود کارکنان
+نام کاربری، رمز عبور، دکمه ورود. ورود ناموفق خطای درون فرم میدهد. هیچ ورودی برای مشتری وجود ندارد.
 
-### P08 — Staff Dashboard
-Operational counters: awaiting reception, awaiting inspection, ready for repair, in repair. Recent request table with status and open action. Widget set varies by role. **No charts, KPIs, or analytical reports** (SRS §7).
+### P08 — داشبورد کارکنان
+شمارش عملیاتی: در انتظار دریافت، در انتظار کارشناسی، آماده تعمیر، در حال تعمیر. جدول درخواستهای اخیر با وضعیت و دکمه باز کردن. مجموعه ابزارکها بر اساس نقش متفاوت است. **نمودار، شاخص و گزارش تحلیلی وجود ندارد** (SRS بخش ۷).
 
-### P09 — Repair Requests List
-Columns: tracking code, customer, device type/model, status, submitted date. Search by tracking code. Filter by status. Row opens P10. Empty state: "No requests match the selected filters."
+### P09 — فهرست درخواستهای تعمیر
+ستونها: کد رهگیری، مشتری، نوع/مدل دستگاه، وضعیت، تاریخ ثبت. جستجو با کد رهگیری. فیلتر بر اساس وضعیت. کلیک روی ردیف → P10. حالت خالی: «درخواستی با فیلترهای انتخابشده مطابقت ندارد.»
 
-### P10 — Staff Request Details
-Full internal record: customer, device, initial description, current status, status history, device receipt, inspection result and defects, proposal and customer decision, repair job, operations, all tests. Action buttons rendered only for the matching role **and** valid status.
+### P10 — جزئیات درخواست برای کارکنان
+سوابق کامل داخلی: مشتری، دستگاه، شرح اولیه، وضعیت فعلی، تاریخچه وضعیتها، دریافت دستگاه، نتیجه کارشناسی و ایرادها، پیشنهاد و تصمیم مشتری، فرایند تعمیر، عملیاتها وهمه آزمونها. دکمهها فقط برای نقش متناسب و وضعیت معتبر نمایش داده میشوند.
 
-### P11 — Device Reception (Service Expert)
-- Request and device summary read-only.
-- Device match selector: `MATCH` / `MISMATCH`.
-- On `MISMATCH`: correction fields for brand (optional), model (required), serial (optional) — limited to `Device` data only (UC-02).
-- Reception timestamp, optional notes, receiving expert from session.
-- Save → `RECEIVED` + StatusHistory. Inspection remains blocked until this succeeds.
+### P11 — دریافت دستگاه (کارشناس خدمات)
+- خلاصه درخواست و دستگاه فقطخواندنی.
+- انتخابگر تطابق: `MATCH` / `MISMATCH`.
+- در حالت `MISMATCH`: فیلدهای اصلاح برند (اختیاری)، مدل (اجباری)، شماره سریال (اختیاری) — محدود به اطلاعات `Device` (UC-02).
+- زمان دریافت، یادداشت اختیاری، کارشناس دریافتکننده از نشست.
+- ذخیره → `RECEIVED` + رکورد StatusHistory. کارشناسی تا موفقیت این مرحله مسدود است.
 
-### P12 — Inspection & Warranty (Service Expert)
-- Warranty result entered manually: `ELIGIBLE` / `NOT_ELIGIBLE`.
-- Rejection reason required when `NOT_ELIGIBLE` (BR-09, IC-07).
-- One or more defects, each with title and description; add-defect control.
-- Recommended action: `REPAIR` / `DEVICE_REPLACEMENT` (expert decision, not a technician operation).
-- Optional inspection notes.
-- `ELIGIBLE` → `READY_FOR_REPAIR` directly: no proposal, no customer decision.
+### P12 — کارشناسی و گارانتی (کارشناس خدمات)
+- وضعیت گارانتی بهصورت دستی: `ELIGIBLE` / `NOT_ELIGIBLE`.
+- دلیل رد برای `NOT_ELIGIBLE` اجباری (BR-09، IC-07).
+- یک یا چند ایراد، هر کدام با عنوان و شرح؛ دکمه افزودن ایراد.
+- اقدام پیشنهادی: `REPAIR` / `DEVICE_REPLACEMENT` (تصمیم کارشناس، نه عملیات تعمیرکار).
+- یادداشت اختیاری کارشناسی.
+- `ELIGIBLE` → مستقیماً `READY_FOR_REPAIR`: بدون پیشنهاد و تصمیم مشتری.
 - `NOT_ELIGIBLE` → `INSPECTED` → P13.
 
-### P13 — Repair Proposal (Service Expert)
-- Inspection summary shown read-only.
-- Single estimated total in **IRR**, numeric and greater than zero (IC-15).
-- Optional notes; customer preview shows only allowlisted fields.
-- Blocked unless warranty = `NOT_ELIGIBLE` and status = `INSPECTED`.
-- Save → `AWAITING_CUSTOMER_DECISION` + StatusHistory. No line items, no payment.
+### P13 — پیشنهاد هزینه (کارشناس خدمات)
+- خلاصه کارشناسی فقطخواندنی.
+- یک مبلغ کل به **ریال**، عددی و بزرگتر از صفر (IC-15).
+- توضیحات اختیاری؛ پیشنمایش مشتری فقط فیلدهای مجاز را نشان میدهد.
+- مسدود مگر اینکه گارانتی `NOT_ELIGIBLE` و وضعیت `INSPECTED` باشد.
+- ذخیره → `AWAITING_CUSTOMER_DECISION` + رکورد StatusHistory. بدون ریزاقلام و بدون پرداخت.
 
-### P14 — Repair Management (Technician)
-- Jobs in `READY_FOR_REPAIR` / `IN_REPAIR` with device and diagnosed defects.
-- **Start Repair** → `IN_REPAIR`; customer cancellation closes from this moment (BR-07).
-- Operation fields: type (`REPAIR`, `PART_REPLACEMENT`, `DEVICE_REPLACEMENT`), description (required), part description (for part replacement), status (`PENDING`, `IN_PROGRESS`, `COMPLETED`).
-- At least one operation required before a final test can be recorded.
+### P14 — مدیریت تعمیر (تعمیرکار)
+- کارهای `READY_FOR_REPAIR` و `IN_REPAIR` همراه با دستگاه و ایرادهای تشخیصدادهشده.
+- **شروع تعمیر** → `IN_REPAIR`؛ از این لحظه لغو توسط مشتری بسته میشود (BR-07).
+- فیلد عملیات: نوع (`REPAIR`، `PART_REPLACEMENT`، `DEVICE_REPLACEMENT`)، شرح (اجباری)، شرح قطعه (برای تعویض قطعه)، وضعیت (`PENDING`، `IN_PROGRESS`، `COMPLETED`).
+- پیش از ثبت آزمون نهایی حداقل یک عملیات لازم است.
 
-### P15 — Repair Testing (Technician)
-- Test result `PASSED` / `FAILED`, notes, tested-by from session.
-- `FAILED`: notes mandatory, status stays `IN_REPAIR`, return to P14 for more operations, then retest (BR-12).
-- `PASSED`: system sets `COMPLETED`, writes StatusHistory and `repairJob.completedAt` (BR-11).
-- All previous test rows remain visible.
+### P15 — آزمون تعمیر (تعمیرکار)
+- نتیجه `PASSED` / `FAILED`، یادداشت، ثبتکننده از نشست.
+- `FAILED`: یادداشت اجباری، وضعیت `IN_REPAIR` باقی میماند، بازگشت به P14 برای عملیات بیشتر و آزمون مجدد (BR-12).
+- `PASSED`: سامانه `COMPLETED` را ثبت میکند، رکورد StatusHistory و `repairJob.completedAt` نوشته میشود (BR-11).
+-همه نتایج آزمون قبلی قابل مشاهدهاند.
 
-### P16 — Staff Management (Admin)
-- Create account: full name, phone, username, initial password, role, active flag.
-- Only `password_hash` is stored by the backend; raw password never persisted.
-- Change role, activate/deactivate existing accounts. Duplicate username rejected.
-- No reporting, finance, or inventory extensions.
+### P16 — 관리ت کارکنان (مدیر سامانه)
+- ایجاد حساب: نام و نام خانوادگی، شماره تماس، نام کاربری، رمز اولیه، نقش، وضعیت فعالیت.
+- بکاند فقط `password_hash` را ذخیره میکند؛ رمز خام هرگز نگهداری نمیشود.
+- تغییر نقش و فعال/غیرفعال کردن. تکراری بودن نام کاربری رد میشود.
+- بدون گزارش، امور مالی یا انبار.
 
-## 3. Flow 2 — In-warranty repair
-
-```
-P02 Register (REGISTERED)
-  → P11 Receive (RECEIVED)
-  → P12 Inspect: ELIGIBLE (READY_FOR_REPAIR)
-  → P14 Start repair + operations (IN_REPAIR)
-  → P15 Test PASSED (COMPLETED)
-  → P04 customer sees final allowlisted status
-```
-
-No proposal, no customer decision, no payment.
-
-## 4. Flow 3 (staff part) — Out-of-warranty repair
+## Flow 2 — تعمیر دارای گارانتی
 
 ```
-P11 Receive → P12 Inspect: NOT_ELIGIBLE (INSPECTED)
-  → P13 Proposal (AWAITING_CUSTOMER_DECISION)
-  → customer P05
-       ├─ Accept → READY_FOR_REPAIR → P14 → P15 PASSED → COMPLETED
-       └─ Reject → CANCELLED (end; repair never starts)
+P02 ثبت (REGISTERED)
+  → P11 دریافت (RECEIVED)
+  → P12 کارشناسی: ELIGIBLE (READY_FOR_REPAIR)
+  → P14 شروع تعمیر + عملیاتها (IN_REPAIR)
+  → P15 آزمون PASSED (COMPLETED)
+  → P04 مشتری وضعیت نهایی مجاز را میبیند
 ```
 
-## 5. Flow 4 — Failed test and retry
+بدون پیشنهاد هزینه، بدون تصمیم مشتری، بدون پرداخت.
+
+## جریان ۳ (بخش کارکنان) — تعمیر خارج از گارانتی
 
 ```
-P14 Start repair (IN_REPAIR)
-  → record operations
-  → P15 Test FAILED -> notes required, status stays IN_REPAIR
-  → P14 add further operations
-  → P15 Test PASSED -> system sets COMPLETED
+P11 دریافت → P12 کارشناسی: NOT_ELIGIBLE (INSPECTED)
+  → P13 پیشنهاد (AWAITING_CUSTOMER_DECISION)
+  → مشتری در P05
+       ├─ پذیرش → READY_FOR_REPAIR → P14 → P15 PASSED → COMPLETED
+       └─ رد → CANCELLED (پایان؛ تعمیر آغاز نمیشود)
 ```
 
-`FAILED` never produces a status transition. All test attempts are kept.
+## Flow 4 — آزمون ناموفق و تعمیر مجدد
 
-## 6. UI states
+```
+P14 شروع تعمیر (IN_REPAIR)
+  → ثبت عملیاتها
+  → P15 آزمون FAILED → یادداشت الزامی، وضعیت IN_REPAIR باقی میماند
+  → P14 عملیات بیشتر
+  → P15 آزمون PASSED → سامانه وضعیت را COMPLETED میکند
+```
 
-| State | Staff behavior |
+`FAILED` هیچ انتقال وضعیتی ایجاد نمیکند.همه تلاشهای آزمون نگهداری میشوند.
+
+## ۳. حالتهای رابط کاربری
+
+| حالت | رفتار در صفحات کارکنان |
 |---|---|
-| Initial | Forms empty; workflow-gated actions disabled with an explanatory notice. |
-| Loading | Buttons disabled; skeletons in counters and tables. |
-| Empty | "No requests" / "No operations yet" / "No tests yet" guidance. |
-| Error | Load failure with retry; invalid credentials; stale status after concurrent change. |
-| Validation | Missing required field, zero/negative amount, defect or operation without description. |
-| Success | Confirmation message and status refresh after each save; location stays on the updated record. |
-| Confirmation | Only destructive/irreversible staff actions (deactivate account, status-closing actions). |
-| Disabled | Inspect before reception, proposal before inspection, start before `READY_FOR_REPAIR`, test before an operation. |
+| اولیه | فرمهای خالی؛ عملیات وابسته به گردشکار غیرفعال همراه با توضیح. |
+| بارگذاری | دکمهها غیرفعال؛ اسکلتون در شمارشها و جداول. |
+| خالی | «درخواستی وجود ندارد» / «هنوز عملیاتی ثبت نشده» / «هنوز آزمونی ثبت نشده». |
+| خطا | خطای بارگذاری با تلاش مجدد؛ اطلاعات نامعتبر؛ وضعیت منسوخ پس از تغییر همزمان. |
+| اعتبارسنجی | فیلد اجباری خالی، مبلغ صفر/منفی، ایراد یا عملیات بدون شرح. |
+| موفقیت | پیام تأیید و بهروز شدن وضعیت؛ کاربر روی رکورد بهروزشده باقی میماند. |
+| تأیید | فقط عملیات غیرقابل بازگشت کارکنان (غیرفعال کردن حساب، بستن وضعیت). |
+| غیرفعال | کارشناسی پیش از دریافت، پیشنهاد پیش از کارشناسی، شروع پیش از `READY_FOR_REPAIR`، آزمون پیش از عملیات. |
 
-## 7. Traceability
+## ۴. ردیابی
 
-| Wireframe | Use case | Requirements / rules |
+| وایرفریم | مورد کاربرد | نیازمندیها / قواعد |
 |---|---|---|
-| P07 | UC-11 related | FR-15, NFR-01 |
+| P07 | مرتبط با UC-11 | FR-15، NFR-01 |
 | P08 | UC-10 | FR-15 |
 | P09 | UC-10 | FR-15 |
-| P10 | UC-10 | FR-15, BR-06 boundary |
-| P11 | UC-02 | FR-05, BR-02, IC-06 |
-| P12 | UC-03 | FR-06, FR-07, BR-03, BR-09, IC-07, IC-08 |
-| P13 | UC-04 | FR-08, BR-04, IC-15 |
-| P14 | UC-07 | FR-11, BR-04, BR-07, IC-12, IC-13 |
-| P15 | UC-08 | FR-11, BR-08, BR-11, BR-12, IC-18, IC-19 |
-| P16 | UC-11 | FR-15, NFR-01 |
+| P10 | UC-10 | FR-15، مرز BR-06 |
+| P11 | UC-02 | FR-05، BR-02، IC-06 |
+| P12 | UC-03 | FR-06، FR-07، BR-03، BR-09، IC-07، IC-08 |
+| P13 | UC-04 | FR-08، BR-04، IC-15 |
+| P14 | UC-07 | FR-11، BR-04، BR-07، IC-12، IC-13 |
+| P15 | UC-08 | FR-11، BR-08، BR-11، BR-12، IC-18، IC-19 |
+| P16 | UC-11 | FR-15، NFR-01 |
