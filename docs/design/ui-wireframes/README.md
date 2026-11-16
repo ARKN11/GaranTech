@@ -1,6 +1,6 @@
 # GaranTech — وایرفریمهای رابط کاربری
 
-**تسک:** طراحی وایرفریم رابط کاربری (Low-Fidelity)  
+**تسک:** طراحی وایرفریم کمّی رابط کاربری  
 **مسئول:** آرش فرهادی راد  
 **وضعیت:** پیشنویس برای بازبینی تیمی  
 **شاخه:** `docs/ui-wireframes`  
@@ -10,7 +10,7 @@
 
 ## ۱. هدف
 
-تعیین ساختار صفحات، محل قرارگیری عناصر، مسیر حرکت کاربر و بازخورد رابط کاربری برای تمام صفحات GaranTech **پیش از شروع پیادهسازی**. وایرفریمها کمّیاند (Low-Fidelity): فقط جعبهها و برچسبهای تکفام؛ بدون رنگ نهایی، آیکون، انیمیشن یا پرداخت بصری.
+تعیین ساختار صفحات، محل قرارگیری عناصر، مسیر حرکت کاربر و بازخورد رابط کاربری برای تمام صفحات GaranTech **پیش از شروع پیادهسازی**. وایرفریمها کمّیاند: فقط جعبهها و برچسبهای تکفام؛ بدون رنگ نهایی، آیکون، انیمیشن یا پرداخت بصری.
 
 قاعده مرجعیت: **SRS نسخه ۰٫۳ مبنا است.** هر جا که فایل تسک با SRS مغایرت داشته باشد، SRS حاکم است و اختلاف در [consistency-review.md](consistency-review.md) ثبت میشود.
 
@@ -41,10 +41,10 @@
 
 | شناسه | صفحه | وایرفریم | نقش | حالتهای اصلی |
 |---|---|---|---|---|
-| P07 | ورود کارکنان | [07-staff-login.svg](images/staff/07-staff-login.svg) |همه کارکنان | اعتبارسنجی، ورود ناموفق |
+| P07 | ورود کارکنان | [07-staff-login.svg](images/staff/07-staff-login.svg) | همه کارکنان | اعتبارسنجی، ورود ناموفق |
 | P08 | داشبورد کارکنان | [08-staff-dashboard.svg](images/staff/08-staff-dashboard.svg) | متناسب نقش | خالی، بارگذاری، فیلتر نقش |
-| P09 | فهرست درخواستها | [09-requests-list.svg](images/staff/09-requests-list.svg) |همه کارکنان | جستجو، فیلتر، خالی |
-| P10 | جزئیات درخواست کارکنان | [10-staff-request-details.svg](images/staff/10-staff-request-details.svg) |همه کارکنان | نمای کامل داخلی، عملیات بر اساس نقش |
+| P09 | فهرست درخواستها | [09-requests-list.svg](images/staff/09-requests-list.svg) | همه کارکنان | جستجو، فیلتر، خالی |
+| P10 | جزئیات درخواست کارکنان | [10-staff-request-details.svg](images/staff/10-staff-request-details.svg) | همه کارکنان | نمای کامل داخلی، عملیات بر اساس نقش |
 | P11 | دریافت دستگاه | [11-device-reception.svg](images/staff/11-device-reception.svg) | کارشناس خدمات | مسیر مغایرت، مسدود پیش از ثبت |
 | P12 | کارشناسی و گارانتی | [12-inspection-warranty.svg](images/staff/12-inspection-warranty.svg) | کارشناس خدمات | ۱ تا N ایراد، دو مسیر گارانتی |
 | P13 | پیشنهاد هزینه | [13-repair-proposal.svg](images/staff/13-repair-proposal.svg) | کارشناس خدمات | مسدود، اعتبارسنجی مبلغ، پیشنمایش |
@@ -67,11 +67,11 @@
 
 | جریان | مسیر | جزئیات |
 |---|---|---|
-| ۱ — ثبت درخواست | P01 → P02 → کد رهگیری → P03 | [customer-flows.md](customer-flows.md#flow-1--ثبت-درخواست) |
-| ۲ — تعمیر دارای گارانتی | P02 → P11 → P12 (ELIGIBLE) → P14 → P15 (PASSED) → P04 | [staff-flows.md](staff-flows.md#flow-2--تعمیر-دارای-گارانتی) |
+| ۱ — ثبت درخواست | P01 → P02 → کد رهگیری → P03 | [customer-flows.md](customer-flows.md#جریان-۱--ثبت-درخواست) |
+| ۲ — تعمیر دارای گارانتی | P02 → P11 → P12 (ELIGIBLE) → P14 → P15 (PASSED) → P04 | [staff-flows.md](staff-flows.md#جریان-۲--تعمیر-دارای-گارانتی) |
 | ۳ — تعمیر خارج از گارانتی | P02 → P11 → P12 (NOT_ELIGIBLE) → P13 → P05 → P14 → P15 → P04 | هر دو سند |
-| ۴ — آزمون ناموفق | P14 (IN_REPAIR) → P15 (FAILED) → P14 → P15 (PASSED) | [staff-flows.md](staff-flows.md#flow-4--آزمون-ناموفق-و-تعمیر-مجدد) |
-| ۵ — پیگیری و لغو | P03 → P04 → P06 (در صورت مجاز بودن) | [customer-flows.md](customer-flows.md#flow-5--پیگیری-و-لغو) |
+| ۴ — آزمون ناموفق | P14 (IN_REPAIR) → P15 (FAILED) → P14 → P15 (PASSED) | [staff-flows.md](staff-flows.md#جریان-۴--آزمون-ناموفق-و-تعمیر-مجدد) |
+| ۵ — پیگیری و لغو | P03 → P04 → P06 (در صورت مجاز بودن) | [customer-flows.md](customer-flows.md#جریان-۵--پیگیری-و-لغو) |
 
 رد پیشنهاد هزینه به `CANCELLED` ختم میشود و هرگز وارد مرحله تعمیر نمیشود.
 
